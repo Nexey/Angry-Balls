@@ -4,6 +4,8 @@ import java.awt.Canvas;
 import java.awt.Graphics;
 import java.util.Vector;
 
+import javax.swing.JPanel;
+
 import modele.Bille;
 
 /**
@@ -13,10 +15,11 @@ import modele.Bille;
  * 
  * 
  */
-public class Billard extends Canvas {
+public class Billard extends JPanel {
 	Vector<Bille> billes;
 
 	public Billard(Vector<Bille> billes) {
+		super();
 		this.billes = billes;
 	}
 
@@ -26,9 +29,10 @@ public class Billard extends Canvas {
 	 * @see java.awt.Canvas#paint(java.awt.Graphics)
 	 */
 	@Override
-	public void paint(Graphics graphics) {
+	public void paintComponent(Graphics graphics) {
+		super.paintComponent(graphics);
 		int i;
-
+		
 		for (i = 0; i < this.billes.size(); ++i)
 			this.billes.get(i).dessine(graphics);
 

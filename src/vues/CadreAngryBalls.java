@@ -3,6 +3,8 @@ package vues;
 import java.awt.*;
 import java.util.Vector;
 
+import javax.swing.JFrame;
+
 import modele.Bille;
 
 import outilsvues.EcouteurTerminaison;
@@ -65,6 +67,7 @@ public class CadreAngryBalls extends Frame implements VueBillard {
 
 	@Override
 	public void miseAJour() {
+		
 		this.billard.repaint();
 	}
 

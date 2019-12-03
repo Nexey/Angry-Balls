@@ -4,6 +4,8 @@ import java.awt.Dimension;
 import java.awt.Frame;
 import java.awt.Toolkit;
 
+import javax.swing.JFrame;
+
 /**
  * Quelques outils pratiques dans des applis GUI
  */
