@@ -15,7 +15,7 @@ import mesmaths.geometrie.base.Vecteur;
  * 
  */
 
-public class BilleMvtRUPasseMurailles extends Bille {
+public class BilleMvtRUPasseMurailles extends BilleParDéfaut {
 
 	/**
 	 * @param centre
@@ -28,10 +28,8 @@ public class BilleMvtRUPasseMurailles extends Bille {
 	}
 
 	@Override
-	public void collisionContour(double abscisseCoinHautGauche, double ordonnéeCoinHautGauche, double largeur,
-			double hauteur) {
-		Collisions.collisionBilleContourPasseMuraille(this.getPosition(), abscisseCoinHautGauche,
-				ordonnéeCoinHautGauche, largeur, hauteur);
+	public void collisionContour(double abscisseCoinHautGauche, double ordonnéeCoinHautGauche, double largeur, double hauteur) {
+		Collisions.collisionBilleContourPasseMuraille(this.getPosition(), abscisseCoinHautGauche, ordonnéeCoinHautGauche, largeur, hauteur);
 
 	}
 

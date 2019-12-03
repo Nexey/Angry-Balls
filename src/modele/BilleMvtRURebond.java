@@ -14,7 +14,7 @@ import mesmaths.geometrie.base.Vecteur;
  * A MODIFIER
  * 
  */
-public class BilleMvtRURebond extends Bille {
+public class BilleMvtRURebond extends BilleParDéfaut {
 
 	public BilleMvtRURebond(Vecteur centre, double rayon, Vecteur vitesse, Color couleur) {
 		super(centre, rayon, vitesse, couleur);
@@ -22,11 +22,8 @@ public class BilleMvtRURebond extends Bille {
 	}
 
 	@Override
-	public void collisionContour(double abscisseCoinHautGauche, double ordonnéeCoinHautGauche, double largeur,
-			double hauteur) {
-		Collisions.collisionBilleContourAvecRebond(this.getPosition(), this.getRayon(), this.getVitesse(),
-				abscisseCoinHautGauche, ordonnéeCoinHautGauche, largeur, hauteur);
-
+	public void collisionContour(double abscisseCoinHautGauche, double ordonnéeCoinHautGauche, double largeur, double hauteur) {
+		Collisions.collisionBilleContourAvecRebond(this.getPosition(), this.getRayon(), this.getVitesse(), abscisseCoinHautGauche, ordonnéeCoinHautGauche, largeur, hauteur);
 	}
 
 }

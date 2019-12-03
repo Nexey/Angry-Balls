@@ -74,7 +74,8 @@ public class TestAngryBalls {
 		billes.add(new BilleMvtPesanteurFrottementRebond(p1, rayon, v1, new Vecteur(0, 0.001), Color.yellow));
 		billes.add(new BilleMvtNewtonFrottementRebond(p2, rayon, v2, Color.green));
 		billes.add(new BilleMvtRUPasseMurailles(p3, rayon, v3, Color.cyan));
-		billes.add(new BilleMvtNewtonArret(p4, rayon, v4, Color.black));
+		//billes.add(new BilleMvtNewtonArret(p4, rayon, v4, Color.black));
+		billes.add(new BilleParDéfaut(p4, rayon, v4, Color.black));
 
 //---------------------- ici finit la partie à changer -------------------------------------------------------------
 

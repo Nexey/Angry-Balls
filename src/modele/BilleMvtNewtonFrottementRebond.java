@@ -16,7 +16,7 @@ import mesmaths.mecanique.MecaniquePoint;
  * A MODIFIER
  * 
  */
-public class BilleMvtNewtonFrottementRebond extends Bille {
+public class BilleMvtNewtonFrottementRebond extends BilleParDéfaut {
 
 	public BilleMvtNewtonFrottementRebond(Vecteur centre, double rayon, Vecteur vitesse, Color couleur) {
 		super(centre, rayon, vitesse, couleur);
@@ -44,10 +44,8 @@ public class BilleMvtNewtonFrottementRebond extends Bille {
 	}
 
 	@Override
-	public void collisionContour(double abscisseCoinHautGauche, double ordonnéeCoinHautGauche, double largeur,
-			double hauteur) {
+	public void collisionContour(double abscisseCoinHautGauche, double ordonnéeCoinHautGauche, double largeur, double hauteur) {
 		Collisions.collisionBilleContourAvecRebond(this.getPosition(), this.getRayon(), this.getVitesse(), abscisseCoinHautGauche, ordonnéeCoinHautGauche, largeur, hauteur);
-
 	}
 
 }
