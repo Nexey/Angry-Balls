@@ -1,9 +1,8 @@
 package états;
 
-import mesmaths.geometrie.base.Vecteur;
 import vues.Application;
 
-public class ContrôleurCliqueRelaché extends ContrôleurÉtat {
+public class ContrôleurCliqueRelaché extends ContrôleurClique {
 
 	public ContrôleurCliqueRelaché(Application application) {
 		this(application, null, null);
@@ -14,19 +13,7 @@ public class ContrôleurCliqueRelaché extends ContrôleurÉtat {
 	}
 
 	@Override
-	public void actionDétectée(Vecteur pos) {
-		if (this != application.getControleurCourant()) return;
-		System.out.println("clic relaché en " + pos);
-		traite(pos);
-	}
-
-	@Override
-	public void traite(Vecteur pos) {
-		this.étatSuivant();
-	}
-
-	@Override
-	public void surChangementÉtat() {
+	public void traitementPosition() {
 		
 	}
 }

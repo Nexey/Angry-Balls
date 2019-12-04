@@ -30,7 +30,7 @@ public abstract class ContrôleurÉtat {
 		this.retour = retour;
 	}
 
-	public abstract void actionDétectée(Vecteur pos);
+	public abstract void actionDétectée(Object e);
 
 	public void étatSuivant() {
 		if (suivant != null) {
@@ -46,7 +46,7 @@ public abstract class ContrôleurÉtat {
 		}
 	}
 	
-	public abstract void traite(Vecteur pos);
+	public abstract void traite();
 
 	public abstract void surChangementÉtat();
 }

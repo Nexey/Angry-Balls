@@ -9,14 +9,13 @@ import java.awt.event.ActionListener;
 
 public class EcouteurBoutonArreter implements ActionListener {
 	AnimationBilles animationBilles;
-
+	
 	public EcouteurBoutonArreter(AnimationBilles animationBilles) {
 		this.animationBilles = animationBilles;
 	}
-
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		this.animationBilles.arrêterAnimation();
 	}
-
 }
