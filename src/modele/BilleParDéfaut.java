@@ -1,11 +1,8 @@
 package modele;
 
 import java.awt.Color;
-import java.awt.Graphics;
 import java.util.Vector;
 
-import mesmaths.cinematique.Cinematique;
-import mesmaths.cinematique.Collisions;
 import mesmaths.geometrie.base.Geop;
 import mesmaths.geometrie.base.Vecteur;
 
@@ -24,7 +21,7 @@ public class BilleParDéfaut extends Bille {
 	 * @param accélération
 	 * @param couleur
 	 */
-	protected BilleParDéfaut(Vecteur centre, double rayon, Vecteur vitesse, Vecteur accélération, Color couleur) {
+	public BilleParDéfaut(Vecteur centre, double rayon, Vecteur vitesse, Vecteur accélération, Color couleur) {
 		this.position = centre;
 		this.rayon = rayon;
 		this.vitesse = vitesse;
@@ -74,21 +71,6 @@ public class BilleParDéfaut extends Bille {
 	public double masse() {
 		return ro * Geop.volumeSphère(rayon);
 	}
-	
-
-	/**
-	 * mise à jour de position et vitesse à t+deltaT à partir de position et vitesse
-	 * à l'instant t
-	 * 
-	 * modifie le vecteur position et le vecteur vitesse
-	 * 
-	 * laisse le vecteur accélération intact
-	 *
-	 * La bille subit par défaut un mouvement uniformément accéléré
-	 */
-	public void déplacer(double deltaT) {
-		Cinematique.mouvementUniformémentAccéléré(this.getPosition(), this.getVitesse(), this.getAccélération(), deltaT);
-	}
 
 	/**
 	 * calcul (c-à-d mise à jour) éventuel du vecteur accélération. billes est la
@@ -101,47 +83,18 @@ public class BilleParDéfaut extends Bille {
 	public void gestionAccélération(Vector<Bille> billes) {
 		this.getAccélération().set(Vecteur.VECTEURNUL);
 	}
-
-	/**
-	 * gestion de l'éventuelle collision de cette bille avec les autres billes
-	 *
-	 * billes est la liste de toutes les billes en mouvement
-	 * 
-	 * Le comportement par défaut est le choc parfaitement élastique (c-à-d rebond
-	 * sans amortissement)
-	 * 
-	 * @return true si il y a collision et dans ce cas les positions et vecteurs
-	 *         vitesses des 2 billes impliquées dans le choc sont modifiées si
-	 *         renvoie false, il n'y a pas de collision et les billes sont laissées
-	 *         intactes
-	 */
-	public boolean gestionCollisionBilleBille(Vector<Bille> billes) {
-		return OutilsBille.gestionCollisionBilleBille(this, billes);
+	
+	@Override
+	public void collisionContour(double abscisseCoinHautGauche, double ordonnéeCoinHautGauche, double largeur, double hauteur) {
+		// Collisions.collisionBilleContourAvecRebond(this.getPosition(), this.getRayon(), this.getVitesse(), abscisseCoinHautGauche, ordonnéeCoinHautGauche, largeur, hauteur);
 	}
 	
-	public void dessine(Graphics g) {
-		int width, height;
-		int xMin, yMin;
-
-		xMin = (int) Math.round(position.x - rayon);
-		yMin = (int) Math.round(position.y - rayon);
-
-		width = height = 2 * (int) Math.round(rayon);
-
-		g.setColor(couleur);
-		g.fillOval(xMin, yMin, width, height);
-		g.setColor(Color.CYAN);
-		g.drawOval(xMin, yMin, width, height);
-	}
-
 	public String toString() {
 		return "centre = " + position + " rayon = " + rayon + " vitesse = " + vitesse + " accélération = " + accélération + " couleur = " + couleur + "clef = " + clef;
 	}
 
-	
-
 	@Override
-	public void collisionContour(double abscisseCoinHautGauche, double ordonnéeCoinHautGauche, double largeur, double hauteur) {
-		Collisions.collisionBilleContourAvecRebond(this.getPosition(), this.getRayon(), this.getVitesse(), abscisseCoinHautGauche, ordonnéeCoinHautGauche, largeur, hauteur);
+	public Color getCouleur() {
+		return couleur;
 	}
 }

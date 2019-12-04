@@ -1,8 +1,11 @@
 package décorateurs;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.util.Vector;
 
+import mesmaths.cinematique.Cinematique;
+import mesmaths.cinematique.Collisions;
 import mesmaths.geometrie.base.Vecteur;
 import modele.Bille;
 
@@ -18,6 +21,11 @@ public abstract class DécorateurBille extends Bille {
 	public void gestionAccélération(Vector<Bille> billes) {
 		this.billeDécorée.gestionAccélération(billes); // remise à zéro du vecteur accélération
 	}
+	
+	public void collisionContour(double abscisseCoinHautGauche, double ordonnéeCoinHautGauche, double largeur, double hauteur) {
+		this.billeDécorée.collisionContour(abscisseCoinHautGauche, ordonnéeCoinHautGauche, largeur, hauteur);
+	}
+	
 	@Override
 	public void dessine(Graphics g) {
 		this.billeDécorée.dessine(g);
@@ -42,25 +50,15 @@ public abstract class DécorateurBille extends Bille {
 	public Vecteur getVitesse() {
 		return this.billeDécorée.getVitesse();
 	}
-
-	@Override
-	public void déplacer(double deltaT) {
-		this.billeDécorée.déplacer(deltaT);
-	}
-
+	
 	@Override
 	public double masse() {
 		return this.billeDécorée.masse();
 	}
-
+	
 	@Override
-	public boolean gestionCollisionBilleBille(Vector<Bille> billes) {
-		return this.billeDécorée.gestionCollisionBilleBille(billes);
-	}
-
-	@Override
-	public void collisionContour(double abscisseCoinHautGauche, double ordonnéeCoinHautGauche, double largeur, double hauteur) {
-		this.billeDécorée.collisionContour(abscisseCoinHautGauche, ordonnéeCoinHautGauche, largeur, hauteur);
+	public Color getCouleur() {
+		return this.billeDécorée.getCouleur();
 	}
 	
 }

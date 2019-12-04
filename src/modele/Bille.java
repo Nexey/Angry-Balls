@@ -20,7 +20,7 @@ public abstract class Bille {
 
 	public int clef; // identifiant unique de cette bille
 	protected static int prochaineClef = 0;
-	
+
 	/**
 	 * @return the clef
 	 */
@@ -28,7 +28,23 @@ public abstract class Bille {
 		return this.clef;
 	}
 	
-	public abstract void dessine(Graphics g);
+	/**
+	 * gestion de l'éventuelle collision de cette bille avec les autres billes
+	 *
+	 * billes est la liste de toutes les billes en mouvement
+	 * 
+	 * Le comportement par défaut est le choc parfaitement élastique (c-à-d rebond
+	 * sans amortissement)
+	 * 
+	 * @return true si il y a collision et dans ce cas les positions et vecteurs
+	 *         vitesses des 2 billes impliquées dans le choc sont modifiées si
+	 *         renvoie false, il n'y a pas de collision et les billes sont laissées
+	 *         intactes
+	 */
+	public boolean gestionCollisionBilleBille(Vector<Bille> billes) {
+		return OutilsBille.gestionCollisionBilleBille(this, billes);
+	}
+	
 	/**
 	 * gestion de l'éventuelle collision de la bille (this) avec le contour
 	 * rectangulaire de l'écran défini par (abscisseCoinHautGauche,
@@ -51,11 +67,40 @@ public abstract class Bille {
 
 	public abstract void gestionAccélération(Vector<Bille> billes);
 
-	public abstract void déplacer(double deltaT);
-
-	public abstract boolean gestionCollisionBilleBille(Vector<Bille> billes);
+	
+	/**
+	 * mise à jour de position et vitesse à t+deltaT à partir de position et vitesse
+	 * à l'instant t
+	 * 
+	 * modifie le vecteur position et le vecteur vitesse
+	 * 
+	 * laisse le vecteur accélération intact
+	 *
+	 * La bille subit par défaut un mouvement uniformément accéléré
+	 */
+	public void déplacer(double deltaT) {
+		Cinematique.mouvementUniformémentAccéléré(this.getPosition(), this.getVitesse(), this.getAccélération(), deltaT);
+	}
 
 	public abstract double masse();
+
+	public abstract Color getCouleur();
+
+	// TODO : Modifier ça par un visiteur
+	public void dessine(Graphics g) {
+		int width, height;
+		int xMin, yMin;
+
+		xMin = (int) Math.round(getPosition().x - getRayon());
+		yMin = (int) Math.round(getPosition().y - getRayon());
+
+		width = height = 2 * (int) Math.round(getRayon());
+
+		g.setColor(getCouleur());
+		g.fillOval(xMin, yMin, width, height);
+		g.setColor(Color.CYAN);
+		g.drawOval(xMin, yMin, width, height);
+	}
 
 //----------------- classe Bille -------------------------------------
 }

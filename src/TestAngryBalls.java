@@ -2,14 +2,12 @@
 import java.awt.Color;
 import java.util.Vector;
 
+import décorateurs.BilleCollisionBille;
+import décorateurs.BilleFrottement;
+import décorateurs.BilleNewton;
+import décorateurs.BillePasseMuraille;
+import décorateurs.BilleRebond;
 import mesmaths.geometrie.base.Vecteur;
-
-import modele.Bille;
-import modele.BilleMvtNewtonArret;
-import modele.BilleMvtNewtonFrottementRebond;
-import modele.BilleMvtRUPasseMurailles;
-import modele.BilleMvtRURebond;
-import modele.BilleMvtPesanteurFrottementRebond;
 import vues.CadreAngryBalls;
 import vues.VueBillard;
 import modele.*;
@@ -41,13 +39,13 @@ public class TestAngryBalls {
 //------------- remplissage de la liste avec 4 billes -------------------------------
 
 		double xMax, yMax;
-		double vMax = 0.1;
+		double vMax = 0.4;
 		xMax = cadre.largeurBillard(); // abscisse maximal
 		yMax = cadre.hauteurBillard(); // ordonnée maximale
 
 		double rayon = 0.05 * Math.min(xMax, yMax); // rayon des billes : ici toutes les billes ont le même rayon, mais
 													// ce n'est pas obligatoire
-
+		
 		Vecteur p0, p1, p2, p3, p4, v0, v1, v2, v3, v4; // les positions des centres des billes et les vecteurs vitesse
 														// au démarrage.
 														// Elles vont être choisies aléatoirement
@@ -69,14 +67,28 @@ public class TestAngryBalls {
 		v4 = Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
 
 //--------------- ici commence la partie à changer ---------------------------------
-
+		/*
 		billes.add(new BilleMvtRURebond(p0, rayon, v0, Color.red));
 		billes.add(new BilleMvtPesanteurFrottementRebond(p1, rayon, v1, new Vecteur(0, 0.001), Color.yellow));
 		billes.add(new BilleMvtNewtonFrottementRebond(p2, rayon, v2, Color.green));
 		billes.add(new BilleMvtRUPasseMurailles(p3, rayon, v3, Color.cyan));
-		//billes.add(new BilleMvtNewtonArret(p4, rayon, v4, Color.black));
-		billes.add(new BilleParDéfaut(p4, rayon, v4, Color.black));
-
+		billes.add(new BilleMvtNewtonArret(p4, rayon, v4, Color.black));
+//	*/
+		
+//		/*
+		//billes.add(new BilleParDéfaut(p0, rayon, v0, Color.cyan));
+		//billes.add(new BilleNewton(new BilleParDéfaut(p1, rayon, v3, Color.red)));
+		//billes.add(new BilleNewton(new BilleParDéfaut(p2, rayon, v2, Color.gray)));
+		// billes.add(new BilleNewton(new BilleParDéfaut(p3, rayon, v4, Color.yellow)));
+		
+		// Démonstration des frottements
+		billes.add(new BilleRebond(new BilleParDéfaut(new Vecteur(p3), rayon, new Vecteur(v3), Color.black)));
+		billes.add(new BilleFrottement(new BilleRebond(new BilleParDéfaut(new Vecteur(p3), rayon, new Vecteur(v3), Color.yellow))));
+		
+		// Test Passe Muraille
+		billes.add(new BilleCollisionBille(new BilleParDéfaut(p2, rayon, v2, Color.cyan)));
+		billes.add(new BilleCollisionBille(new BilleParDéfaut(p1, rayon, v1, Color.cyan)));
+// */
 //---------------------- ici finit la partie à changer -------------------------------------------------------------
 
 		System.out.println("billes = " + billes);
