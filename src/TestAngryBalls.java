@@ -2,11 +2,7 @@
 import java.awt.Color;
 import java.util.Vector;
 
-import décorateurs.BilleCollisionBille;
-import décorateurs.BilleFrottement;
-import décorateurs.BilleNewton;
-import décorateurs.BillePasseMuraille;
-import décorateurs.BilleRebond;
+import décorateurs.*;
 import mesmaths.geometrie.base.Vecteur;
 import vues.CadreAngryBalls;
 import vues.VueBillard;
@@ -39,7 +35,7 @@ public class TestAngryBalls {
 //------------- remplissage de la liste avec 4 billes -------------------------------
 
 		double xMax, yMax;
-		double vMax = 0.4;
+		double vMax = 0.1;
 		xMax = cadre.largeurBillard(); // abscisse maximal
 		yMax = cadre.hauteurBillard(); // ordonnée maximale
 
@@ -81,13 +77,15 @@ public class TestAngryBalls {
 		//billes.add(new BilleNewton(new BilleParDéfaut(p2, rayon, v2, Color.gray)));
 		// billes.add(new BilleNewton(new BilleParDéfaut(p3, rayon, v4, Color.yellow)));
 		
-		// Démonstration des frottements
-		billes.add(new BilleRebond(new BilleParDéfaut(new Vecteur(p3), rayon, new Vecteur(v3), Color.black)));
-		billes.add(new BilleFrottement(new BilleRebond(new BilleParDéfaut(new Vecteur(p3), rayon, new Vecteur(v3), Color.yellow))));
+		// Bille qui rebondit
+		billes.add(new BilleRebond(new BilleParDéfaut(p4, rayon, v4, Color.black)));
 		
-		// Test Passe Muraille
-		billes.add(new BilleCollisionBille(new BilleParDéfaut(p2, rayon, v2, Color.cyan)));
-		billes.add(new BilleCollisionBille(new BilleParDéfaut(p1, rayon, v1, Color.cyan)));
+		// Bille qui poursuit les autres
+		billes.add(new BilleNewton(new BilleRebond(new BilleParDéfaut(p3, rayon, v3, Color.yellow))));
+		
+		// Test Passe Muraille avec une qui a du frottement
+		billes.add(new BillePasseMuraille(new BilleParDéfaut(p2, rayon, v2, Color.cyan)));
+		billes.add(new BilleFrottement(new BillePasseMuraille(new BilleParDéfaut(p1, rayon, v1, Color.blue))));
 // */
 //---------------------- ici finit la partie à changer -------------------------------------------------------------
 

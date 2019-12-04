@@ -22,12 +22,12 @@ public class BilleParDéfaut extends Bille {
 	 * @param couleur
 	 */
 	public BilleParDéfaut(Vecteur centre, double rayon, Vecteur vitesse, Vecteur accélération, Color couleur) {
+		super();
 		this.position = centre;
 		this.rayon = rayon;
 		this.vitesse = vitesse;
 		this.accélération = accélération;
 		this.couleur = couleur;
-		this.clef = Bille.prochaineClef++;
 	}
 
 	/**
@@ -96,5 +96,10 @@ public class BilleParDéfaut extends Bille {
 	@Override
 	public Color getCouleur() {
 		return couleur;
+	}
+
+	@Override
+	public int getClef() {
+		return this.clef;
 	}
 }

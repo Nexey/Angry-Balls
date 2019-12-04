@@ -20,13 +20,16 @@ public abstract class Bille {
 
 	public int clef; // identifiant unique de cette bille
 	protected static int prochaineClef = 0;
+	
+	public Bille() {
+		this.clef = Bille.prochaineClef++;
+		
+	}
 
 	/**
 	 * @return the clef
 	 */
-	public int getClef() {
-		return this.clef;
-	}
+	public abstract int getClef();
 	
 	/**
 	 * gestion de l'éventuelle collision de cette bille avec les autres billes
@@ -67,7 +70,6 @@ public abstract class Bille {
 
 	public abstract void gestionAccélération(Vector<Bille> billes);
 
-	
 	/**
 	 * mise à jour de position et vitesse à t+deltaT à partir de position et vitesse
 	 * à l'instant t

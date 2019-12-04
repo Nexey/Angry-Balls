@@ -86,8 +86,10 @@ public class AnimationBilles implements Runnable {
 		double vitesse2Courante;
 
 		for (i = 0; i < billes.size(); ++i)
-			if ((vitesse2Courante = billes.get(i).getVitesse().normeCarrée()) > vitesse2Max)
+			if ((vitesse2Courante = billes.get(i).getVitesse().normeCarrée()) > vitesse2Max) {
+				System.out.println("test");
 				vitesse2Max = vitesse2Courante;
+			}
 
 		return vitesse2Max;
 	}

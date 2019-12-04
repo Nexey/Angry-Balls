@@ -14,6 +14,7 @@ public abstract class DécorateurBille extends Bille {
 	protected Bille billeDécorée;
 
 	protected DécorateurBille(Bille billeDécorée) {
+		super();
 		this.billeDécorée = billeDécorée;
 	}
 	
@@ -22,8 +23,14 @@ public abstract class DécorateurBille extends Bille {
 		this.billeDécorée.gestionAccélération(billes); // remise à zéro du vecteur accélération
 	}
 	
+	@Override
 	public void collisionContour(double abscisseCoinHautGauche, double ordonnéeCoinHautGauche, double largeur, double hauteur) {
 		this.billeDécorée.collisionContour(abscisseCoinHautGauche, ordonnéeCoinHautGauche, largeur, hauteur);
+	}
+	
+	@Override
+	public int getClef() {
+		return this.billeDécorée.getClef();
 	}
 	
 	@Override
