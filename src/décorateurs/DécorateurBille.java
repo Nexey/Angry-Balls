@@ -39,22 +39,22 @@ public abstract class DécorateurBille extends Bille {
 	public void dessine(Graphics g) {
 		this.billeDécorée.dessine(g);
 	}
-
+	
 	@Override
 	public Vecteur getAccélération() {
 		return this.billeDécorée.getAccélération();
 	}
-
+	
 	@Override
 	public Vecteur getPosition() {
 		return this.billeDécorée.getPosition();
 	}
-
+	
 	@Override
 	public double getRayon() {
 		return this.billeDécorée.getRayon();
 	}
-
+	
 	@Override
 	public Vecteur getVitesse() {
 		return this.billeDécorée.getVitesse();

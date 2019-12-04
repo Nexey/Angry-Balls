@@ -17,7 +17,7 @@ public class ApplicationContrôlée extends Application implements MouseListener {
 	
 	public ApplicationContrôlée(Vector<Bille> billes, AnimationBilles animationBilles, CadreAngryBalls cadreAngryBalls) {
 		super(billes);
-		cadreAngryBalls.addMouseListener(this);
+		cadreAngryBalls.billard.addMouseListener(this);
 		installeContrôleurs();
 	}
 	
@@ -36,12 +36,12 @@ public class ApplicationContrôlée extends Application implements MouseListener {
 	
 	@Override
 	public void mousePressed(MouseEvent e) {
-		this.controleurCourant.actionDétectée(new Vecteur(e.getLocationOnScreen().x, e.getLocationOnScreen().y));
+		this.controleurCourant.actionDétectée(new Vecteur(e.getX(), e.getY()));
 	}
 	
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		this.controleurCourant.actionDétectée(new Vecteur(e.getLocationOnScreen().x, e.getLocationOnScreen().y));
+		this.controleurCourant.actionDétectée(new Vecteur(e.getX(), e.getY()));
 	}
 	
 	@Override

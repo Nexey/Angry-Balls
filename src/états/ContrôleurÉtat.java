@@ -46,7 +46,7 @@ public abstract class ContrôleurÉtat {
 		}
 	}
 	
-	public abstract void traite();
+	public abstract void traite(Vecteur pos);
 
 	public abstract void surChangementÉtat();
 }

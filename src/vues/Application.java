@@ -7,7 +7,7 @@ import états.ContrôleurÉtat;
 
 public abstract class Application {
 	protected ContrôleurÉtat controleurCourant;
-    private Vector<Bille> billes;
+    public Vector<Bille> billes;
     
     public Application(Vector<Bille> billes) {
     	this.billes = billes;

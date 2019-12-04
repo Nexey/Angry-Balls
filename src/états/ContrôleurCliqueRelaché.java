@@ -17,12 +17,11 @@ public class ContrôleurCliqueRelaché extends ContrôleurÉtat {
 	public void actionDétectée(Vecteur pos) {
 		if (this != application.getControleurCourant()) return;
 		System.out.println("clic relaché en " + pos);
-		traite();
+		traite(pos);
 	}
 
 	@Override
-	public void traite() {
-
+	public void traite(Vecteur pos) {
 		this.étatSuivant();
 	}
 
