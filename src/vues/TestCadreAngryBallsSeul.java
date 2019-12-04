@@ -1,6 +1,5 @@
 package vues;
 
-import java.awt.Frame;
 import java.util.Vector;
 
 import modele.Bille;
@@ -15,5 +14,4 @@ public class TestCadreAngryBallsSeul {
 		CadreAngryBalls cadre = new CadreAngryBalls("angry balls", "animation de billes marrantes", billes);
 		cadre.montrer();
 	}
-
 }

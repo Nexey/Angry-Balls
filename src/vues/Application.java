@@ -6,7 +6,7 @@ import modele.Bille;
 import états.ContrôleurÉtat;
 
 public abstract class Application {
-	private ContrôleurÉtat controleurCourant;
+	protected ContrôleurÉtat controleurCourant;
     private Vector<Bille> billes;
     
     public Application(Vector<Bille> billes) {

@@ -4,7 +4,6 @@ import java.util.Vector;
 
 import mesmaths.mecanique.MecaniquePoint;
 import modele.Bille;
-import modele.OutilsBille;
 
 public class BilleFrottement extends DécorateurBille {
 

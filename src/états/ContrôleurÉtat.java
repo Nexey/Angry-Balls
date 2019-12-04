@@ -1,7 +1,5 @@
 package états;
 
-import java.awt.event.ActionEvent;
-
 import mesmaths.geometrie.base.Vecteur;
 import vues.Application;
 
@@ -19,36 +17,36 @@ public abstract class ContrôleurÉtat {
 		this.suivant = suivant;
 		this.retour = retour;
 	}
-	
+
 	public ContrôleurÉtat(Application application) {
 		this(application, null, null);
 	}
-	
-    public void setSuivant(ContrôleurÉtat suivant){
-        this.suivant = suivant;
-    }
 
-    public void setRetour(ContrôleurÉtat retour){
-        this.retour = retour;
-    }
+	public void setSuivant(ContrôleurÉtat suivant) {
+		this.suivant = suivant;
+	}
 
-    public abstract void actionDétectée(Vecteur pos);
+	public void setRetour(ContrôleurÉtat retour) {
+		this.retour = retour;
+	}
 
-    public void étatSuivant(){
-        if(suivant != null){
-            application.setControleurCourant(suivant);
-            suivant.surChangementÉtat();
-        }
-    }
+	public abstract void actionDétectée(Vecteur pos);
 
-    public void étatRetour(){
-        if(retour != null){
-            application.setControleurCourant(retour);
-            retour.surChangementÉtat();
-        }
-    }
+	public void étatSuivant() {
+		if (suivant != null) {
+			application.setControleurCourant(suivant);
+			suivant.surChangementÉtat();
+		}
+	}
+
+	public void étatRetour() {
+		if (retour != null) {
+			application.setControleurCourant(retour);
+			retour.surChangementÉtat();
+		}
+	}
 	
 	public abstract void traite();
-	
-    public abstract void surChangementÉtat();
+
+	public abstract void surChangementÉtat();
 }

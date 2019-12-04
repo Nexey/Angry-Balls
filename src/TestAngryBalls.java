@@ -126,32 +126,6 @@ public class TestAngryBalls {
 		
 		cadre.lancerBilles.addActionListener(écouteurBoutonLancer); // maladroit : à changer
 		cadre.arrêterBilles.addActionListener(écouteurBoutonArrêter); // maladroit : à changer
-		cadre.addMouseListener(new MouseListener() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				System.out.println("Clicked");
-			}
-
-			@Override
-			public void mousePressed(MouseEvent e) {
-				System.out.println("Pressed");
-			}
-
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				System.out.println("Released");
-			}
-
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				System.out.println("Entered");
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e) {
-				System.out.println("Exited");
-			}
-		});
 	}
 
 }
