@@ -1,3 +1,4 @@
+package main;
 
 import java.awt.Color;
 import java.awt.event.KeyEvent;
@@ -118,13 +119,13 @@ public class TestAngryBalls {
 
 //----------------------- mise en place des écouteurs de boutons qui permettent de contrôler (un peu...) l'application -----------------
 
-		EcouteurBoutonLancer écouteurBoutonLancer = new EcouteurBoutonLancer(animationBilles);
-		EcouteurBoutonArreter écouteurBoutonArrêter = new EcouteurBoutonArreter(animationBilles);
+//		EcouteurBoutonLancer écouteurBoutonLancer = new EcouteurBoutonLancer(animationBilles);
+//		EcouteurBoutonArreter écouteurBoutonArrêter = new EcouteurBoutonArreter(animationBilles);
 
 //------------------------- activation des écouteurs des boutons et ça tourne tout seul ------------------------------
 
-		cadre.lancerBilles.addActionListener(écouteurBoutonLancer); // maladroit : à changer
-		cadre.arrêterBilles.addActionListener(écouteurBoutonArrêter); // maladroit : à changer
+//		cadre.lancerBilles.addActionListener(écouteurBoutonLancer); // maladroit : à changer
+//		cadre.arrêterBilles.addActionListener(écouteurBoutonArrêter); // maladroit : à changer
 	}
 
 }

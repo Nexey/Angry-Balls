@@ -1,14 +1,16 @@
+package main;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Vector;
 
-import mesmaths.geometrie.base.Vecteur;
 import modele.Bille;
 import vues.Application;
 import vues.CadreAngryBalls;
+import états.ContrôleurBoutonArrêter;
+import états.ContrôleurBoutonLancer;
 import états.ContrôleurCliqueEnfoncé;
 import états.ContrôleurCliqueRelaché;
 
@@ -17,13 +19,17 @@ import états.ContrôleurCliqueRelaché;
 public class ApplicationContrôlée extends Application implements MouseListener, ActionListener {
 	ContrôleurCliqueEnfoncé contrôleurCliqueEnfoncé;
 	ContrôleurCliqueRelaché contrôleurCliqueRelaché;
+	ContrôleurBoutonLancer contrôleurBoutonLancer;
+	ContrôleurBoutonArrêter contrôleurBoutonArrêter;
+	AnimationBilles animationBilles;
 
 	public ApplicationContrôlée(Vector<Bille> billes, AnimationBilles animationBilles, CadreAngryBalls cadreAngryBalls) {
 		super(billes);
+		this.animationBilles = animationBilles;
 		cadreAngryBalls.billard.addMouseListener(this);
-		cadreAngryBalls.lancerBilles.addMouseListener(this);
-		cadreAngryBalls.arrêterBilles.addMouseListener(this);
-		installeContrôleurs();
+		cadreAngryBalls.lancerBilles.addActionListener(this);
+		cadreAngryBalls.arrêterBilles.addActionListener(this);
+		installeContrôleurs(cadreAngryBalls);
 	}
 
 	/*
@@ -31,26 +37,36 @@ public class ApplicationContrôlée extends Application implements MouseListener, 
 	 * Rappelons que chaque état est géré par un contrôleur d'état. Il faut donc
 	 * autant de contrôleurs que d'états + le contrôleur courant
 	 */
-	private void installeContrôleurs() {
+	private void installeContrôleurs(CadreAngryBalls cadreAngryBalls) {
+		
+		/*
 		this.contrôleurCliqueEnfoncé = new ContrôleurCliqueEnfoncé(this);
 		this.contrôleurCliqueRelaché = new ContrôleurCliqueRelaché(this, contrôleurCliqueEnfoncé, contrôleurCliqueEnfoncé);
 		this.contrôleurCliqueEnfoncé.setSuivant(contrôleurCliqueRelaché);
 		this.contrôleurCliqueEnfoncé.setRetour(contrôleurCliqueRelaché);
 		this.controleurCourant = contrôleurCliqueEnfoncé;
+		*/
+		
+		this.contrôleurBoutonLancer = new ContrôleurBoutonLancer(cadreAngryBalls.lancerBilles, this.animationBilles, this);
+		this.contrôleurBoutonArrêter = new ContrôleurBoutonArrêter(cadreAngryBalls.arrêterBilles, this.animationBilles, this, contrôleurBoutonLancer, contrôleurBoutonLancer);
+		this.contrôleurBoutonLancer.setSuivant(this.contrôleurBoutonArrêter);
+		this.contrôleurBoutonLancer.setRetour(this.contrôleurBoutonArrêter);
+		this.setControleurCourant(contrôleurBoutonLancer);
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		this.controleurCourant.actionDétectée(e);
+		// this.controleurCourant.actionDétectée(e);
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		this.controleurCourant.actionDétectée(e);
+		// this.controleurCourant.actionDétectée(e);
 	}
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
+		// this.controleurCourant.actionDétectée(e);
 	}
 
 	@Override
@@ -63,6 +79,6 @@ public class ApplicationContrôlée extends Application implements MouseListener, 
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		this.controleurCourant.actionDétectée(e);
 	}
 }

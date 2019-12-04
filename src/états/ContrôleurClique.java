@@ -36,7 +36,7 @@ public abstract class ContrôleurClique extends ContrôleurÉtat {
 
 	@Override
 	public void surChangementÉtat() {
-
+		
 	}
 
 }
