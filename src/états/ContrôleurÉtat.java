@@ -1,10 +1,9 @@
 package états;
 
-import mesmaths.geometrie.base.Vecteur;
-import vues.Application;
+import main.ApplicationContrôlée;
 
 public abstract class ContrôleurÉtat {
-	Application application;
+	public ApplicationContrôlée application;
 	public ContrôleurÉtat suivant, retour; // lien vers l'état suivant ou vers l'état précédent
 
 	/**
@@ -12,13 +11,13 @@ public abstract class ContrôleurÉtat {
 	 * @param suivant
 	 * @param retour
 	 */
-	public ContrôleurÉtat(Application application, ContrôleurÉtat suivant, ContrôleurÉtat retour) {
+	public ContrôleurÉtat(ApplicationContrôlée application, ContrôleurÉtat suivant, ContrôleurÉtat retour) {
 		this.application = application;
 		this.suivant = suivant;
 		this.retour = retour;
 	}
 
-	public ContrôleurÉtat(Application application) {
+	public ContrôleurÉtat(ApplicationContrôlée application) {
 		this(application, null, null);
 	}
 
@@ -32,19 +31,20 @@ public abstract class ContrôleurÉtat {
 
 	public abstract void actionDétectée(Object e);
 
+	/*
 	public void étatSuivant() {
 		if (suivant != null) {
-			application.setControleurCourant(suivant);
+			application.setControleurBoutonCourant(suivant);
 			suivant.surChangementÉtat();
 		}
 	}
 
 	public void étatRetour() {
 		if (retour != null) {
-			application.setControleurCourant(retour);
+			application.setControleurBoutonCourant(retour);
 			retour.surChangementÉtat();
 		}
-	}
+	}*/
 	
 	public abstract void traite();
 

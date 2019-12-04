@@ -85,12 +85,12 @@ public class TestAngryBalls {
 		 * Color.black)); //
 		 */
 
-//		/*
+		/*
 		billes.add(new BilleParDéfaut(p0, rayon, v0, Color.cyan));
 		billes.add(new BilleNewton(new BilleParDéfaut(p1, rayon, v3, Color.red)));
 		billes.add(new BilleNewton(new BilleParDéfaut(p2, rayon, v2, Color.gray)));
 		billes.add(new BilleNewton(new BilleParDéfaut(p3, rayon, v4, Color.yellow)));
-
+// */
 		// Bille qui rebondit
 		billes.add(new BilleRebond(new BilleParDéfaut(centreAléatoire(xMax, yMax), rayon, vitesseAléatoire(vMax), Color.black)));
 		System.out.println(billes.get(0).getPosition());

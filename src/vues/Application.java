@@ -3,10 +3,8 @@ package vues;
 import java.util.Vector;
 
 import modele.Bille;
-import états.ContrôleurÉtat;
 
 public abstract class Application {
-	protected ContrôleurÉtat controleurCourant;
     public Vector<Bille> billes;
     
     public Application(Vector<Bille> billes) {
@@ -19,14 +17,6 @@ public abstract class Application {
 	
 	protected void setBilles(Vector<Bille> billes) {
 		this.billes = billes;
-	}
-	
-	public ContrôleurÉtat getControleurCourant() {
-		return controleurCourant;
-	}
-	
-	public void setControleurCourant(ContrôleurÉtat controleurCourant) {
-		this.controleurCourant = controleurCourant;
 	}
 	
 	public void arreter(){
