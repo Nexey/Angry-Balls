@@ -16,6 +16,14 @@ import modele.*;
  */
 public class TestAngryBalls {
 
+	public static Vecteur centreAléatoire(double xMax, double yMax) {
+		return Vecteur.créationAléatoire(0, 0, xMax, yMax);
+	}
+	
+	public static Vecteur vitesseAléatoire(double vMax) {
+		return Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
+	}
+	
 	/**
 	 * @param args
 	 */
@@ -78,15 +86,20 @@ public class TestAngryBalls {
 		// billes.add(new BilleNewton(new BilleParDéfaut(p3, rayon, v4, Color.yellow)));
 		
 		// Bille qui rebondit
-		billes.add(new BilleRebond(new BilleParDéfaut(p4, rayon, v4, Color.black)));
+		billes.add(new BilleRebond(new BilleParDéfaut(centreAléatoire(xMax, yMax), rayon, vitesseAléatoire(vMax), Color.black)));
 		
 		// Bille qui poursuit les autres
-		billes.add(new BilleNewton(new BilleRebond(new BilleParDéfaut(p3, rayon, v3, Color.yellow))));
+		billes.add(new BilleNewton(new BilleRebond(new BilleParDéfaut(centreAléatoire(xMax, yMax), rayon, vitesseAléatoire(vMax), Color.green))));
 		
-		// Test Passe Muraille avec une qui a du frottement
-		billes.add(new BillePasseMuraille(new BilleParDéfaut(p2, rayon, v2, Color.cyan)));
-		billes.add(new BilleFrottement(new BillePasseMuraille(new BilleParDéfaut(p1, rayon, v1, Color.blue))));
-		System.out.println(billes);
+		// Billes passe muraille avec une qui a du frottement
+		billes.add(new BillePasseMuraille(new BilleParDéfaut(centreAléatoire(xMax, yMax), rayon, vitesseAléatoire(vMax), Color.cyan)));
+		billes.add(new BilleFrottement(new BillePasseMuraille(new BilleParDéfaut(centreAléatoire(xMax, yMax), rayon, vitesseAléatoire(vMax), Color.blue))));
+		
+		// Bille qui a de la pesanteur ET du frottement
+		billes.add(new BilleFrottement(new BillePesanteur(new Vecteur(0, 0.001), new BilleRebond(new BilleParDéfaut(centreAléatoire(xMax, yMax), rayon, vitesseAléatoire(vMax), Color.white)))));
+		
+		// Bille qui a un arrêt et qui est newton
+		billes.add(new BilleNewton(new BilleArrêt(new BilleRebond(new BilleParDéfaut(centreAléatoire(xMax, yMax), rayon, vitesseAléatoire(vMax), Color.gray)))));
 // */
 //---------------------- ici finit la partie à changer -------------------------------------------------------------
 

@@ -5,7 +5,7 @@ import modele.Bille;
 
 public class BilleArrêt extends DécorateurBille {
 
-	protected BilleArrêt(Bille billeDécorée) {
+	public BilleArrêt(Bille billeDécorée) {
 		super(billeDécorée);
 	}
 
