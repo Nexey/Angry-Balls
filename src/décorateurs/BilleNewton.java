@@ -17,4 +17,9 @@ public class BilleNewton extends DécorateurBille {
 																							// l'attraction des autres
 																							// billes
 	}
+	
+	@Override
+	public String toString() {
+		return "bille avec comportement newton - " + this.billeDécorée.toString();
+	}
 }

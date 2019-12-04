@@ -27,7 +27,7 @@ public class AnimationBilles implements Runnable {
 	public AnimationBilles(Vector<Bille> billes, VueBillard vueBillard) {
 		this.billes = billes;
 		this.vueBillard = vueBillard;
-		this.thread = null; // est-ce utile ?
+		// this.thread = null; // est-ce utile ? -> non
 	}
 
 	@Override
@@ -41,7 +41,7 @@ public class AnimationBilles implements Runnable {
 
 			while (!Thread.interrupted()) // gestion du mouvement
 			{
-				// deltaT = COEFF*minRayons2/(1+maxVitessesCarrées(billes)); // mise à jour
+				deltaT = COEFF * minRayons2 / (1 + maxVitessesCarrées(billes)); // mise à jour
 				// deltaT. L'addition + 1 est une astuce pour éviter les divisions par zéro
 
 				// System.err.println("deltaT = " + deltaT);
@@ -87,7 +87,6 @@ public class AnimationBilles implements Runnable {
 
 		for (i = 0; i < billes.size(); ++i)
 			if ((vitesse2Courante = billes.get(i).getVitesse().normeCarrée()) > vitesse2Max) {
-				System.out.println("test");
 				vitesse2Max = vitesse2Courante;
 			}
 

@@ -23,4 +23,9 @@ public class BilleFrottement extends DécorateurBille {
 																											// dans
 																											// l'air// billes
 	}
+	
+	@Override
+	public String toString() {
+		return "bille avec frottement - " + this.billeDécorée.toString();
+	}
 }

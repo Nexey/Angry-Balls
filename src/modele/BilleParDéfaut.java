@@ -88,10 +88,6 @@ public class BilleParDéfaut extends Bille {
 	public void collisionContour(double abscisseCoinHautGauche, double ordonnéeCoinHautGauche, double largeur, double hauteur) {
 		// Collisions.collisionBilleContourAvecRebond(this.getPosition(), this.getRayon(), this.getVitesse(), abscisseCoinHautGauche, ordonnéeCoinHautGauche, largeur, hauteur);
 	}
-	
-	public String toString() {
-		return "centre = " + position + " rayon = " + rayon + " vitesse = " + vitesse + " accélération = " + accélération + " couleur = " + couleur + "clef = " + clef;
-	}
 
 	@Override
 	public Color getCouleur() {

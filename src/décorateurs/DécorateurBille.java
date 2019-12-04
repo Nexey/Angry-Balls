@@ -4,8 +4,6 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.util.Vector;
 
-import mesmaths.cinematique.Cinematique;
-import mesmaths.cinematique.Collisions;
 import mesmaths.geometrie.base.Vecteur;
 import modele.Bille;
 
@@ -16,6 +14,10 @@ public abstract class DécorateurBille extends Bille {
 	protected DécorateurBille(Bille billeDécorée) {
 		super();
 		this.billeDécorée = billeDécorée;
+	}
+	
+	public int getClefDécorateur() {
+		return this.clef;
 	}
 	
 	@Override

@@ -4,8 +4,6 @@ import java.awt.*;
 import java.util.Vector;
 
 import mesmaths.cinematique.Cinematique;
-import mesmaths.cinematique.Collisions;
-import mesmaths.geometrie.base.Geop;
 import mesmaths.geometrie.base.Vecteur;
 
 /**
@@ -102,6 +100,10 @@ public abstract class Bille {
 		g.fillOval(xMin, yMin, width, height);
 		g.setColor(Color.CYAN);
 		g.drawOval(xMin, yMin, width, height);
+	}
+	
+	public String toString() {
+		return "centre = " + getPosition() + " rayon = " + getRayon() + " vitesse = " + getVitesse() + " accélération = " + getAccélération() + " couleur = " + getCouleur() + "clef = " + getClef();
 	}
 
 //----------------- classe Bille -------------------------------------

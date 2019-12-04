@@ -86,6 +86,7 @@ public class TestAngryBalls {
 		// Test Passe Muraille avec une qui a du frottement
 		billes.add(new BillePasseMuraille(new BilleParDéfaut(p2, rayon, v2, Color.cyan)));
 		billes.add(new BilleFrottement(new BillePasseMuraille(new BilleParDéfaut(p1, rayon, v1, Color.blue))));
+		System.out.println(billes);
 // */
 //---------------------- ici finit la partie à changer -------------------------------------------------------------
 
