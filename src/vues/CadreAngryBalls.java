@@ -19,9 +19,9 @@ import outilsvues.Outils;
  * 
  * 
  */
-public class CadreAngryBalls extends Frame implements VueBillard {
+public class CadreAngryBalls extends JFrame implements VueBillard {
 	TextField présentation;
-	Billard billard;
+	public Billard billard;
 	public Button lancerBilles, arrêterBilles;
 	Panel haut, centre, bas;
 
@@ -30,6 +30,7 @@ public class CadreAngryBalls extends Frame implements VueBillard {
 	public CadreAngryBalls(String titre, String message, Vector<Bille> billes) throws HeadlessException {
 		super(titre);
 		Outils.place(this, 0.33, 0.33, 0.5, 0.5);
+		
 		this.ecouteurTerminaison = new EcouteurTerminaison(this);
 
 		this.haut = new Panel();
@@ -67,7 +68,6 @@ public class CadreAngryBalls extends Frame implements VueBillard {
 
 	@Override
 	public void miseAJour() {
-		
 		this.billard.repaint();
 	}
 

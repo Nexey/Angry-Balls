@@ -70,10 +70,21 @@ public class OutilsBille {
 
 		for (i = 0; i < autresBilles.size(); ++i) {
 			billeCourante = autresBilles.get(i);
-			if (Collisions.CollisionBilleBille(cetteBille.getPosition(), cetteBille.getRayon(), cetteBille.getVitesse(),
-					cetteBille.masse(), billeCourante.getPosition(), billeCourante.getRayon(),
-					billeCourante.getVitesse(), billeCourante.masse()))
+			if (Collisions.CollisionBilleBille(
+					cetteBille.getPosition(),
+					cetteBille.getRayon(),
+					cetteBille.getVitesse(),
+					cetteBille.masse(),
+					billeCourante.getPosition(),
+					billeCourante.getRayon(),
+					billeCourante.getVitesse(),
+					billeCourante.masse())
+				) {
+				System.out.println("Collision entre la bille " + cetteBille.getCouleur() + " et la bille " + billeCourante.getCouleur());
+				System.out.println("Force de la bille " + cetteBille.getCouleur() + "  : " + cetteBille.getAccélération());
+				System.out.println("Force de la bille " + billeCourante.getCouleur() + "  : " + billeCourante.getAccélération());
 				return true;
+			}
 		}
 		return false;
 	}

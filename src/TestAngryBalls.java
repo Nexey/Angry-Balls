@@ -1,6 +1,12 @@
 
 import java.awt.Color;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.Vector;
+
+import javax.swing.JTextField;
 
 import décorateurs.*;
 import mesmaths.geometrie.base.Vecteur;
@@ -37,13 +43,12 @@ public class TestAngryBalls {
 		CadreAngryBalls cadre = new CadreAngryBalls("Angry balls",
 				"Animation de billes ayant des comportements différents. Situation idéale pour mettre en place le DP Decorator",
 				billes);
-
 		cadre.montrer(); // on rend visible la vue
 
 //------------- remplissage de la liste avec 4 billes -------------------------------
 
 		double xMax, yMax;
-		double vMax = 0.1;
+		double vMax = 0.4;
 		xMax = cadre.largeurBillard(); // abscisse maximal
 		yMax = cadre.hauteurBillard(); // ordonnée maximale
 
@@ -89,17 +94,17 @@ public class TestAngryBalls {
 		billes.add(new BilleRebond(new BilleParDéfaut(centreAléatoire(xMax, yMax), rayon, vitesseAléatoire(vMax), Color.black)));
 		
 		// Bille qui poursuit les autres
-		billes.add(new BilleNewton(new BilleRebond(new BilleParDéfaut(centreAléatoire(xMax, yMax), rayon, vitesseAléatoire(vMax), Color.green))));
+		//billes.add(new BilleNewton(new BilleRebond(new BilleParDéfaut(centreAléatoire(xMax, yMax), rayon, vitesseAléatoire(vMax), Color.green))));
 		
 		// Billes passe muraille avec une qui a du frottement
-		billes.add(new BillePasseMuraille(new BilleParDéfaut(centreAléatoire(xMax, yMax), rayon, vitesseAléatoire(vMax), Color.cyan)));
-		billes.add(new BilleFrottement(new BillePasseMuraille(new BilleParDéfaut(centreAléatoire(xMax, yMax), rayon, vitesseAléatoire(vMax), Color.blue))));
+		//billes.add(new BillePasseMuraille(new BilleParDéfaut(centreAléatoire(xMax, yMax), rayon, vitesseAléatoire(vMax), Color.cyan)));
+		//billes.add(new BilleFrottement(new BillePasseMuraille(new BilleParDéfaut(centreAléatoire(xMax, yMax), rayon, vitesseAléatoire(vMax), Color.blue))));
 		
 		// Bille qui a de la pesanteur ET du frottement
 		billes.add(new BilleFrottement(new BillePesanteur(new Vecteur(0, 0.001), new BilleRebond(new BilleParDéfaut(centreAléatoire(xMax, yMax), rayon, vitesseAléatoire(vMax), Color.white)))));
 		
 		// Bille qui a un arrêt et qui est newton
-		billes.add(new BilleNewton(new BilleArrêt(new BilleRebond(new BilleParDéfaut(centreAléatoire(xMax, yMax), rayon, vitesseAléatoire(vMax), Color.gray)))));
+		//billes.add(new BilleNewton(new BilleArrêt(new BilleRebond(new BilleParDéfaut(centreAléatoire(xMax, yMax), rayon, vitesseAléatoire(vMax), Color.gray)))));
 // */
 //---------------------- ici finit la partie à changer -------------------------------------------------------------
 
@@ -108,6 +113,8 @@ public class TestAngryBalls {
 //-------------------- création de l'objet responsable de l'animation (c'est un thread séparé) -----------------------
 
 		AnimationBilles animationBilles = new AnimationBilles(billes, cadre);
+		ApplicationContrôlée app = new ApplicationContrôlée(billes, animationBilles, cadre);
+		
 
 //----------------------- mise en place des écouteurs de boutons qui permettent de contrôler (un peu...) l'application -----------------
 
@@ -116,9 +123,35 @@ public class TestAngryBalls {
 
 //------------------------- activation des écouteurs des boutons et ça tourne tout seul ------------------------------
 
+		
 		cadre.lancerBilles.addActionListener(écouteurBoutonLancer); // maladroit : à changer
 		cadre.arrêterBilles.addActionListener(écouteurBoutonArrêter); // maladroit : à changer
+		cadre.addMouseListener(new MouseListener() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				System.out.println("Clicked");
+			}
 
+			@Override
+			public void mousePressed(MouseEvent e) {
+				System.out.println("Pressed");
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				System.out.println("Released");
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				System.out.println("Entered");
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				System.out.println("Exited");
+			}
+		});
 	}
 
 }
