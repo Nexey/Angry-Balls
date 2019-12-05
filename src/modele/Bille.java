@@ -66,6 +66,8 @@ public abstract class Bille {
 		Cinematique.mouvementUniformémentAccéléré(this.getPosition(), this.getVitesse(), this.getAccélération(), deltaT);
 	}
 	
+	public abstract void setCouleur(Color couleur);
+	
 	/**
 	 * gestion de l'éventuelle collision de la bille (this) avec le contour
 	 * rectangulaire de l'écran défini par (abscisseCoinHautGauche,

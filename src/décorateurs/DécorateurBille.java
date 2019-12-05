@@ -11,7 +11,7 @@ public abstract class DécorateurBille extends Bille {
 	
 	protected Bille billeDécorée;
 
-	protected DécorateurBille(Bille billeDécorée) {
+	public DécorateurBille(Bille billeDécorée) {
 		super();
 		this.billeDécorée = billeDécorée;
 	}
@@ -53,6 +53,7 @@ public abstract class DécorateurBille extends Bille {
 	@Override
 	public Vecteur getVitesse() {
 		return this.billeDécorée.getVitesse();
+		
 	}
 	
 	@Override
@@ -63,6 +64,11 @@ public abstract class DécorateurBille extends Bille {
 	@Override
 	public Color getCouleur() {
 		return this.billeDécorée.getCouleur();
+	}
+	
+	@Override
+	public void setCouleur(Color couleur) {
+		this.billeDécorée.setCouleur(couleur);
 	}
 	
 }

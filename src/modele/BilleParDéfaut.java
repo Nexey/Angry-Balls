@@ -48,7 +48,7 @@ public class BilleParDéfaut extends Bille {
 	public BilleParDéfaut(Vecteur position, double rayon, Color couleur) {
 		this(position, rayon, new Vecteur(), new Vecteur(), couleur);
 	}
-
+	
 	/**
 	 * @return the position
 	 */
@@ -101,6 +101,10 @@ public class BilleParDéfaut extends Bille {
 	@Override
 	public Color getCouleur() {
 		return couleur;
+	}
+	@Override
+	public void setCouleur(Color couleur) {
+		this.couleur = couleur;
 	}
 
 	@Override

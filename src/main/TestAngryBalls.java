@@ -125,12 +125,12 @@ public class TestAngryBalls {
 		billes.add(new BilleFrottement(new BilleRebond(new BilleParDéfaut(p11, rayon, Color.black))));
 		billes.add(new BilleFrottement(new BilleRebond(new BilleParDéfaut(p12, rayon, Color.black))));
 		billes.add(new BilleFrottement(new BilleRebond(new BilleParDéfaut(p13, rayon, Color.black))));
-		billes.add(new BilleFrottement(new BilleRebond(new BilleParDéfaut(p14, rayon, Color.black))));
-
+		billes.add(new BilleVoleuse(new BilleFrottement(new BilleRebond(new BilleParDéfaut(p14, rayon, Color.blue)))));
+		
 		// Bille pilotée
-		Bille billePilotéeRose = new BillePilotée(/* new BillePesanteur(new Vecteur(0, 0.001), */ new BilleFrottement(new BilleRebond(new BilleParDéfaut(p5, rayon, Color.pink))))/* ) */;
+		Bille billePilotéeRose = new BillePilotée(/* new BillePesanteur(new Vecteur(0, 0.001), */ new BilleFrottement(new BilleRebond(new BilleParDéfaut(p5, rayon*2, Color.pink))))/* ) */;
 		billes.add(billePilotéeRose);
-
+		
 // */
 //---------------------- ici finit la partie à changer -------------------------------------------------------------
 
