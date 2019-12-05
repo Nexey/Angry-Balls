@@ -1,32 +1,53 @@
-package décorateurs;
+package dÃ©corateurs;
 
-import java.awt.event.MouseEvent;
 import java.util.Observable;
 import java.util.Observer;
 
 import mesmaths.geometrie.base.Geop;
 import mesmaths.geometrie.base.Vecteur;
 import modele.Bille;
+import modele.InfoClique;
 
-public class BillePilotée extends DécorateurBille implements Observer {
+public class BillePilotÃ©e extends DÃ©corateurBille implements Observer {
+	protected boolean pilotÃ©e;
+	protected Vecteur vecteurDeb;
 
-	public BillePilotée(Bille billeDécorée) {
-		super(billeDécorée);
+	public BillePilotÃ©e(Bille billeDÃ©corÃ©e) {
+		super(billeDÃ©corÃ©e);
+		this.pilotÃ©e = false;
+		this.vecteurDeb = Vecteur.VECTEURNUL;
+	}
+
+	protected void setVecteurDeb(Vecteur vecteurDeb) {
+		this.vecteurDeb = vecteurDeb;
 	}
 
 	@Override
 	public void update(Observable o, Object arg) {
-		MouseEvent event;
-		if (null == arg) System.out.println("relaché");
-		else if (arg instanceof MouseEvent) {
-			event = (MouseEvent) arg;
-			
-			Vecteur pos = new Vecteur(event.getX(), event.getY());
-			if (Geop.appartientDisque(pos, this.getPosition(), this.getRayon())) {
-				System.out.println("touché");
-				// Changement du comportement ici
+		InfoClique infoClique;
+		if (arg instanceof InfoClique) {
+			infoClique = (InfoClique) arg;
+			if (infoClique.isPressed()) {
+				if (Geop.appartientDisque(infoClique.getPositionClique(), this.getPosition(), this.getRayon())) {
+					this.pilotÃ©e = true;
+					System.out.println("touchÃ©");
+					setVecteurDeb(infoClique.getPositionClique());
+				}
+			} else if (infoClique.isReleased()) {
+				if (this.pilotÃ©e) {
+					this.pilotÃ©e = false;
+					Vecteur direction = infoClique.getPositionClique().difference(this.vecteurDeb);
+					// direction = this.vecteurDeb.difference(infoClique.getPositionClique());
+					Vecteur nouvelleVitesse = this.getVitesse().somme(direction);
+					nouvelleVitesse.x /= 1000;
+					nouvelleVitesse.y /= 1000;
+					this.getVitesse().set(nouvelleVitesse);
+					System.out.println("relachÃ©");
+					System.out.println(this.vecteurDeb + " -> " + infoClique.getPositionClique());
+					System.out.println(direction);
+					setVecteurDeb(Vecteur.VECTEURNUL);
+				}
 			}
 		}
 	}
-
 }

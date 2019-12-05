@@ -86,24 +86,23 @@ public class TestAngryBalls {
 		
 		
 		// Bille qui rebondit
-		billes.add(new BilleRebond(new BilleParDéfaut(centreAléatoire(xMax, yMax), rayon, vitesseAléatoire(vMax), Color.black)));
-		System.out.println(billes.get(0).getPosition());
+		// billes.add(new BilleRebond(new BilleParDéfaut(centreAléatoire(xMax, yMax), rayon, vitesseAléatoire(vMax), Color.black)));
 
 		// Bille qui poursuit les autres
-		billes.add(new BilleNewton(new BilleRebond(new BilleParDéfaut(centreAléatoire(xMax, yMax), rayon, vitesseAléatoire(vMax), Color.green))));
+		// billes.add(new BilleNewton(new BilleRebond(new BilleParDéfaut(centreAléatoire(xMax, yMax), rayon, vitesseAléatoire(vMax), Color.green))));
 
 		// Billes passe muraille avec une qui a du frottement
-		billes.add(new BillePasseMuraille(new BilleParDéfaut(centreAléatoire(xMax, yMax), rayon, vitesseAléatoire(vMax), Color.cyan)));
-		billes.add(new BilleFrottement(new BillePasseMuraille(new BilleParDéfaut(centreAléatoire(xMax, yMax), rayon, vitesseAléatoire(vMax), Color.blue))));
+		// billes.add(new BillePasseMuraille(new BilleParDéfaut(centreAléatoire(xMax, yMax), rayon, vitesseAléatoire(vMax), Color.cyan)));
+		// billes.add(new BilleFrottement(new BillePasseMuraille(new BilleParDéfaut(centreAléatoire(xMax, yMax), rayon, vitesseAléatoire(vMax), Color.blue))));
 
 		// Bille qui a de la pesanteur ET du frottement
-		billes.add(new BilleFrottement(new BillePesanteur(new Vecteur(0, 0.001), new BilleRebond(new BilleParDéfaut(centreAléatoire(xMax, yMax), rayon, vitesseAléatoire(vMax), Color.white)))));
+		// billes.add(new BilleFrottement(new BillePesanteur(new Vecteur(0, 0.001), new BilleRebond(new BilleParDéfaut(centreAléatoire(xMax, yMax), rayon, vitesseAléatoire(vMax), Color.white)))));
 
 		// Bille qui a un arrêt et qui est newton
 		billes.add(new BilleNewton(new BilleArrêt(new BilleRebond(new BilleParDéfaut(centreAléatoire(xMax, yMax), rayon, vitesseAléatoire(vMax), Color.gray)))));
 
 		// Bille pilotée
-		Bille billePilotéeRose = new BillePilotée(new BilleRebond(new BilleParDéfaut(centreAléatoire(xMax, yMax), rayon, vitesseAléatoire(vMax), Color.pink)));
+		Bille billePilotéeRose = new BillePilotée(new BilleFrottement(new BilleRebond(new BilleParDéfaut(centreAléatoire(xMax, yMax), rayon, vitesseAléatoire(vMax), Color.pink))));
 		billes.add(billePilotéeRose);
 
 // */

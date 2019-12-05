@@ -1,10 +1,8 @@
 package états;
 
-import java.awt.event.MouseEvent;
-
 import main.ApplicationContrôlée;
 import mesmaths.geometrie.base.Vecteur;
-import vues.Application;
+import modele.InfoClique;
 
 public abstract class ContrôleurClique extends ContrôleurÉtat {
 
@@ -22,9 +20,10 @@ public abstract class ContrôleurClique extends ContrôleurÉtat {
 	public void actionDétectée(Object e) {
 		if (this != this.application.getContrôleurCliqueCourant())
 			return;
-		MouseEvent event = (MouseEvent) e;
-		this.pos = new Vecteur(event.getX(), event.getY());
-		traite();
+		if (e instanceof InfoClique) {
+			this.pos = ((InfoClique) e).getPositionClique();
+			traite();
+		}
 	}
 
 	@Override
@@ -32,12 +31,12 @@ public abstract class ContrôleurClique extends ContrôleurÉtat {
 		traitementPosition();
 		this.application.setContrôleurCliqueCourant(this.suivant);
 	}
-	
+
 	public abstract void traitementPosition();
 
 	@Override
 	public void surChangementÉtat() {
-		
+
 	}
 
 }

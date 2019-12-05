@@ -9,7 +9,9 @@ import java.util.Vector;
 import javax.swing.ImageIcon;
 import javax.swing.event.MouseInputListener;
 
+import mesmaths.geometrie.base.Vecteur;
 import modele.Bille;
+import modele.InfoClique;
 import vues.Application;
 import vues.CadreAngryBalls;
 import états.ContrôleurBoutonArrêter;
@@ -20,7 +22,7 @@ import états.ContrôleurÉtat;
 
 /* Cette classe se charge de rajouter les observeurs sur l'application */
 
-public class ApplicationContrôlée extends Application implements MouseInputListener, ActionListener {
+public class ApplicationContrôlée extends Application implements MouseListener, ActionListener {
 	protected ContrôleurÉtat contrôleurBoutonCourant;
 	protected ContrôleurÉtat contrôleurCliqueCourant;
 	protected ContrôleurCliqueEnfoncé contrôleurCliqueEnfoncé;
@@ -36,12 +38,13 @@ public class ApplicationContrôlée extends Application implements MouseInputListe
 		this.animationBilles = animationBilles;
 		this.jeuLancé = false;
 		cadreAngryBalls.billard.addMouseListener(this);
-		cadreAngryBalls.billard.addMouseMotionListener(this);
 		cadreAngryBalls.boutonJeu.addActionListener(this);
 
 		cadreAngryBalls.boutonJeu.addIcone("Lancer", new ImageIcon("src/assets/lancer.png"));
 		cadreAngryBalls.boutonJeu.addIcone("Arrêter", new ImageIcon("src/assets/pause.png"));
 		cadreAngryBalls.boutonJeu.setIcon(cadreAngryBalls.boutonJeu.getIcone("Lancer"));
+		cadreAngryBalls.boutonJeu.setFocusPainted(false);
+		cadreAngryBalls.boutonJeu.setBorderPainted(false);
 		installeContrôleurs(cadreAngryBalls);
 	}
 	
@@ -92,33 +95,35 @@ public class ApplicationContrôlée extends Application implements MouseInputListe
 		this.contrôleurCliqueCourant = contrôleurCliqueCourant;
 	}
 	
+	public Vecteur getCoordsMouseEvent(MouseEvent e) {
+		return new Vecteur(e.getX(), e.getY());
+	}
+	
+	protected void posHandler(InfoClique clique) {
+		this.setChanged();
+		this.notifyObservers(clique);
+		this.contrôleurCliqueCourant.actionDétectée(clique);
+	}
+	
 	@Override
 	public void mousePressed(MouseEvent e) {
-		this.setChanged();
-		this.notifyObservers(e);
-		this.contrôleurCliqueCourant.actionDétectée(e);
+		InfoClique infoClique = new InfoClique(this.getCoordsMouseEvent(e));
+		infoClique.updatePressed();
+		this.posHandler(infoClique);
 	}
 	
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		this.setChanged();
-		this.notifyObservers();
-		this.contrôleurCliqueCourant.actionDétectée(e);
+		InfoClique infoClique = new InfoClique(this.getCoordsMouseEvent(e));
+		infoClique.updateReleased();
+		this.posHandler(infoClique);
 	}
-
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		this.contrôleurBoutonCourant.actionDétectée(e);
 	}
-
-	@Override
-	public void mouseDragged(MouseEvent e) {
-		System.out.println("Mouse dragged");
-	}
-
-	@Override
-	public void mouseMoved(MouseEvent e) {}
-
+	
 	@Override
 	public void mouseClicked(MouseEvent e) {}
 

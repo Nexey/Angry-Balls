@@ -6,7 +6,9 @@ import java.util.Vector;
 import mesmaths.cinematique.Cinematique;
 import mesmaths.geometrie.base.Vecteur;
 import visiteurs.IVisiteur;
+import visiteurs.VisiteurCollisionBille;
 import visiteurs.VisiteurDessinBille;
+import visiteurs.VisiteurDéplacementBille;
 
 /**
  * Cas général d'une bille de billard
@@ -48,8 +50,31 @@ public abstract class Bille {
 	 *         renvoie false, il n'y a pas de collision et les billes sont laissées
 	 *         intactes
 	 */
+	
 	public boolean gestionCollisionBilleBille(Vector<Bille> billes) {
-		return OutilsBille.gestionCollisionBilleBille(this, billes);
+		IVisiteur visiteurCollision = new VisiteurCollisionBille(billes);
+		return this.accepte(visiteurCollision);
+	}
+
+	/**
+	 * mise à jour de position et vitesse à t+deltaT à partir de position et vitesse
+	 * à l'instant t
+	 * 
+	 * modifie le vecteur position et le vecteur vitesse
+	 * 
+	 * laisse le vecteur accélération intact
+	 *
+	 * La bille subit par défaut un mouvement uniformément accéléré
+	 */
+	public void déplacer(double deltaT) {
+		IVisiteur visiteurDéplacement = new VisiteurDéplacementBille(deltaT);
+		this.accepte(visiteurDéplacement);
+	}
+
+	
+	public void dessine(Graphics g) {
+		IVisiteur visiteurDessin = new VisiteurDessinBille(g);
+		this.accepte(visiteurDessin);
 	}
 	
 	/**
@@ -74,29 +99,9 @@ public abstract class Bille {
 
 	public abstract void gestionAccélération(Vector<Bille> billes);
 
-	/**
-	 * mise à jour de position et vitesse à t+deltaT à partir de position et vitesse
-	 * à l'instant t
-	 * 
-	 * modifie le vecteur position et le vecteur vitesse
-	 * 
-	 * laisse le vecteur accélération intact
-	 *
-	 * La bille subit par défaut un mouvement uniformément accéléré
-	 */
-	public void déplacer(double deltaT) {
-		Cinematique.mouvementUniformémentAccéléré(this.getPosition(), this.getVitesse(), this.getAccélération(), deltaT);
-	}
-
 	public abstract double masse();
 
 	public abstract Color getCouleur();
-
-	// Remplacé par un visiteur
-	public void dessine(Graphics g) {
-		IVisiteur visiteurDessin = new VisiteurDessinBille(g);
-		this.accepte(visiteurDessin);
-	}
 	
 	public String toString() {
 		return "centre = " + getPosition() + " rayon = " + getRayon() + " vitesse = " + getVitesse() + " accélération = " + getAccélération() + " couleur = " + getCouleur() + "clef = " + getClef();
