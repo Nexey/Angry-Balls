@@ -38,10 +38,13 @@ public class BillePilotée extends DécorateurBille implements Observer {
 					this.pilotée = false;
 					Vecteur direction = infoClique.getPositionClique().difference(this.vecteurDeb);
 					// direction = this.vecteurDeb.difference(infoClique.getPositionClique());
-					Vecteur nouvelleVitesse = this.getVitesse().somme(direction);
-					nouvelleVitesse.x /= 1000;
-					nouvelleVitesse.y /= 1000;
-					this.getVitesse().set(nouvelleVitesse);
+					
+					Vecteur nouvelleVitesse = new Vecteur(0, 0);
+					//nouvelleVitesse = new Vecteur(this.getVitesse().x + this.getPosition().x, this.getVitesse().y + this.getPosition().y).somme(direction);
+					nouvelleVitesse.x = direction.x / 10000;
+					nouvelleVitesse.y = direction.y / 10000;
+					
+					this.getAccélération().ajoute(nouvelleVitesse);
 					System.out.println("relaché");
 					System.out.println(this.vecteurDeb + " -> " + infoClique.getPositionClique());
 					System.out.println(direction);
@@ -49,5 +52,10 @@ public class BillePilotée extends DécorateurBille implements Observer {
 				}
 			}
 		}
+	}
+
+	@Override
+	public String toString() {
+		return "bille pilotée - " + this.billeDécorée.toString();
 	}
 }

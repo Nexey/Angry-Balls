@@ -99,12 +99,12 @@ public class TestAngryBalls {
 		// billes.add(new BilleFrottement(new BillePesanteur(new Vecteur(0, 0.001), new BilleRebond(new BilleParDéfaut(centreAléatoire(xMax, yMax), rayon, vitesseAléatoire(vMax), Color.white)))));
 
 		// Bille qui a un arrêt et qui est newton
-		billes.add(new BilleNewton(new BilleArrêt(new BilleRebond(new BilleParDéfaut(centreAléatoire(xMax, yMax), rayon, vitesseAléatoire(vMax), Color.gray)))));
+		// billes.add(new BilleNewton(new BilleArrêt(new BilleRebond(new BilleParDéfaut(centreAléatoire(xMax, yMax), rayon, vitesseAléatoire(vMax), Color.gray)))));
 
 		// Bille pilotée
-		Bille billePilotéeRose = new BillePilotée(new BilleFrottement(new BilleRebond(new BilleParDéfaut(centreAléatoire(xMax, yMax), rayon, vitesseAléatoire(vMax), Color.pink))));
+		Bille billePilotéeRose = new BillePilotée(/* new BillePesanteur(new Vecteur(0, 0.001),*/ new BilleFrottement(new BilleRebond(new BilleParDéfaut(centreAléatoire(xMax, yMax), rayon, vitesseAléatoire(vMax), Color.pink))))/*)*/;
 		billes.add(billePilotéeRose);
-
+		
 // */
 //---------------------- ici finit la partie à changer -------------------------------------------------------------
 
