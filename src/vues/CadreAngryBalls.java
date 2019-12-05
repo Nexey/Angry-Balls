@@ -57,7 +57,6 @@ public class CadreAngryBalls extends JFrame implements VueBillard {
 		//this.boutonJeu = new Button("lancer les billes");
 		//this.arrêterBilles = new Button("arrêter les billes");
 		//this.bas.add(this.arrêterBilles);
-
 	}
 
 	public double largeurBillard() {

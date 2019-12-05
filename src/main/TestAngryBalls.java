@@ -5,6 +5,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Observer;
 import java.util.Vector;
 
 import javax.swing.JTextField;
@@ -94,12 +95,13 @@ public class TestAngryBalls {
 		// Bille qui rebondit
 		billes.add(new BilleRebond(new BilleParDéfaut(centreAléatoire(xMax, yMax), rayon, vitesseAléatoire(vMax), Color.black)));
 		System.out.println(billes.get(0).getPosition());
-
+		
 		// Bille qui poursuit les autres
 		billes.add(new BilleNewton(new BilleRebond(new BilleParDéfaut(centreAléatoire(xMax, yMax), rayon, vitesseAléatoire(vMax), Color.green))));
 
 		// Billes passe muraille avec une qui a du frottement
-		billes.add(new BillePasseMuraille(new BilleParDéfaut(centreAléatoire(xMax, yMax), rayon, vitesseAléatoire(vMax), Color.cyan)));
+		Bille billePilotéeCyan = new BillePilotée(new BilleFrottement(new BillePasseMuraille(new BilleParDéfaut(centreAléatoire(xMax, yMax), rayon, vitesseAléatoire(vMax), Color.cyan))));
+		billes.add(billePilotéeCyan);
 		billes.add(new BilleFrottement(new BillePasseMuraille(new BilleParDéfaut(centreAléatoire(xMax, yMax), rayon, vitesseAléatoire(vMax), Color.blue))));
 
 		// Bille qui a de la pesanteur ET du frottement
@@ -107,6 +109,11 @@ public class TestAngryBalls {
 
 		// Bille qui a un arrêt et qui est newton
 		billes.add(new BilleNewton(new BilleArrêt(new BilleRebond(new BilleParDéfaut(centreAléatoire(xMax, yMax), rayon, vitesseAléatoire(vMax), Color.gray)))));
+		
+		// Bille pilotée
+		Bille billePilotéeRose = new BillePilotée(new BilleRebond(new BilleParDéfaut(centreAléatoire(xMax, yMax), rayon, vitesseAléatoire(vMax), Color.pink)));
+		billes.add(billePilotéeRose);
+		
 // */
 //---------------------- ici finit la partie à changer -------------------------------------------------------------
 
@@ -116,6 +123,8 @@ public class TestAngryBalls {
 
 		AnimationBilles animationBilles = new AnimationBilles(billes, cadre);
 		ApplicationContrôlée app = new ApplicationContrôlée(billes, animationBilles, cadre);
+		app.addObserver((Observer) billePilotéeRose);
+		app.addObserver((Observer) billePilotéeCyan);
 
 //----------------------- mise en place des écouteurs de boutons qui permettent de contrôler (un peu...) l'application -----------------
 

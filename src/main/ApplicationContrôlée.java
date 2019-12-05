@@ -7,6 +7,7 @@ import java.awt.event.MouseListener;
 import java.util.Vector;
 
 import javax.swing.ImageIcon;
+import javax.swing.event.MouseInputListener;
 
 import modele.Bille;
 import vues.Application;
@@ -19,7 +20,7 @@ import états.ContrôleurÉtat;
 
 /* Cette classe se charge de rajouter les observeurs sur l'application */
 
-public class ApplicationContrôlée extends Application implements MouseListener, ActionListener {
+public class ApplicationContrôlée extends Application implements MouseInputListener, ActionListener {
 	protected ContrôleurÉtat contrôleurBoutonCourant;
 	protected ContrôleurÉtat contrôleurCliqueCourant;
 	protected ContrôleurCliqueEnfoncé contrôleurCliqueEnfoncé;
@@ -35,8 +36,8 @@ public class ApplicationContrôlée extends Application implements MouseListener, 
 		this.animationBilles = animationBilles;
 		this.jeuLancé = false;
 		cadreAngryBalls.billard.addMouseListener(this);
+		cadreAngryBalls.billard.addMouseMotionListener(this);
 		cadreAngryBalls.boutonJeu.addActionListener(this);
-		// cadreAngryBalls.arrêterBilles.addActionListener(this);
 
 		cadreAngryBalls.boutonJeu.addIcone("Lancer", new ImageIcon("src/assets/lancer.png"));
 		cadreAngryBalls.boutonJeu.addIcone("Arrêter", new ImageIcon("src/assets/pause.png"));
@@ -93,11 +94,15 @@ public class ApplicationContrôlée extends Application implements MouseListener, 
 	
 	@Override
 	public void mousePressed(MouseEvent e) {
+		this.setChanged();
+		this.notifyObservers(e);
 		this.contrôleurCliqueCourant.actionDétectée(e);
 	}
-
+	
 	@Override
 	public void mouseReleased(MouseEvent e) {
+		this.setChanged();
+		this.notifyObservers(e);
 		this.contrôleurCliqueCourant.actionDétectée(e);
 	}
 
@@ -117,5 +122,17 @@ public class ApplicationContrôlée extends Application implements MouseListener, 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		this.contrôleurBoutonCourant.actionDétectée(e);
+	}
+
+	@Override
+	public void mouseDragged(MouseEvent e) {
+		System.out.println("Mouse dragged");
+		
+	}
+
+	@Override
+	public void mouseMoved(MouseEvent e) {
+		// System.out.println("Mouse moved");
+		
 	}
 }

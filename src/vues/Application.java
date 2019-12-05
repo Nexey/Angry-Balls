@@ -1,10 +1,11 @@
 package vues;
 
+import java.util.Observable;
 import java.util.Vector;
 
 import modele.Bille;
 
-public abstract class Application {
+public abstract class Application extends Observable {
     public Vector<Bille> billes;
     
     public Application(Vector<Bille> billes) {

@@ -16,16 +16,5 @@ public class ContrôleurCliqueEnfoncé extends ContrôleurClique {
 	}
 	
 	@Override
-	public void traitementPosition() {
-		for (Bille bille : application.billes) {
-			System.out.println(bille.getPosition());
-			Vecteur diff = Vecteur.difference(bille.getPosition(), pos);
-			double	normeDiffCarée = diff.normeCarrée(),
-					rayon = bille.getRayon() + 1.,
-					rayonCarrée = rayon * rayon;
-			
-			if (normeDiffCarée < rayonCarrée)
-				System.out.println("Clique sur la bille " + bille.getCouleur().toString());
-		}
-	}
+	public void traitementPosition() {}
 }
