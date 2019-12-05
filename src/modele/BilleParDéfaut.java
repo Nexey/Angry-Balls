@@ -41,6 +41,15 @@ public class BilleParDéfaut extends Bille {
 	}
 
 	/**
+	 * @param position
+	 * @param rayon
+	 * @param couleur
+	 */
+	public BilleParDéfaut(Vecteur position, double rayon, Color couleur) {
+		this(position, rayon, new Vecteur(), new Vecteur(), couleur);
+	}
+
+	/**
 	 * @return the position
 	 */
 	public Vecteur getPosition() {
