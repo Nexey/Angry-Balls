@@ -48,7 +48,7 @@ public class TestAngryBalls {
 //------------- remplissage de la liste avec 4 billes -------------------------------
 
 		double xMax, yMax;
-		double vMax = 0.4;
+		double vMax = 0.1;
 		xMax = cadre.largeurBillard(); // abscisse maximal
 		yMax = cadre.hauteurBillard(); // ordonnée maximale
 
@@ -78,30 +78,22 @@ public class TestAngryBalls {
 
 //--------------- ici commence la partie à changer ---------------------------------
 		/*
-		 * billes.add(new BilleMvtRURebond(p0, rayon, v0, Color.red)); billes.add(new
-		 * BilleMvtPesanteurFrottementRebond(p1, rayon, v1, new Vecteur(0, 0.001),
-		 * Color.yellow)); billes.add(new BilleMvtNewtonFrottementRebond(p2, rayon, v2,
-		 * Color.green)); billes.add(new BilleMvtRUPasseMurailles(p3, rayon, v3,
-		 * Color.cyan)); billes.add(new BilleMvtNewtonArret(p4, rayon, v4,
-		 * Color.black)); //
-		 */
-
-		/*
-		billes.add(new BilleParDéfaut(p0, rayon, v0, Color.cyan));
-		billes.add(new BilleNewton(new BilleParDéfaut(p1, rayon, v3, Color.red)));
-		billes.add(new BilleNewton(new BilleParDéfaut(p2, rayon, v2, Color.gray)));
-		billes.add(new BilleNewton(new BilleParDéfaut(p3, rayon, v4, Color.yellow)));
-// */
+		billes.add(new BilleMvtRURebond(p0, rayon, v0, Color.red));
+		billes.add(new BilleMvtPesanteurFrottementRebond(p1, rayon, v1, new Vecteur(0, 0.001), Color.yellow));
+		billes.add(new BilleMvtNewtonFrottementRebond(p2, rayon, v2, Color.green));
+		billes.add(new BilleMvtRUPasseMurailles(p3, rayon, v3, Color.cyan));
+		billes.add(new BilleMvtNewtonArret(p4, rayon, v4, Color.black)); // */
+		
+		
 		// Bille qui rebondit
 		billes.add(new BilleRebond(new BilleParDéfaut(centreAléatoire(xMax, yMax), rayon, vitesseAléatoire(vMax), Color.black)));
 		System.out.println(billes.get(0).getPosition());
-		
+
 		// Bille qui poursuit les autres
 		billes.add(new BilleNewton(new BilleRebond(new BilleParDéfaut(centreAléatoire(xMax, yMax), rayon, vitesseAléatoire(vMax), Color.green))));
 
 		// Billes passe muraille avec une qui a du frottement
-		Bille billePilotéeCyan = new BillePilotée(new BilleFrottement(new BillePasseMuraille(new BilleParDéfaut(centreAléatoire(xMax, yMax), rayon, vitesseAléatoire(vMax), Color.cyan))));
-		billes.add(billePilotéeCyan);
+		billes.add(new BillePasseMuraille(new BilleParDéfaut(centreAléatoire(xMax, yMax), rayon, vitesseAléatoire(vMax), Color.cyan)));
 		billes.add(new BilleFrottement(new BillePasseMuraille(new BilleParDéfaut(centreAléatoire(xMax, yMax), rayon, vitesseAléatoire(vMax), Color.blue))));
 
 		// Bille qui a de la pesanteur ET du frottement
@@ -109,11 +101,11 @@ public class TestAngryBalls {
 
 		// Bille qui a un arrêt et qui est newton
 		billes.add(new BilleNewton(new BilleArrêt(new BilleRebond(new BilleParDéfaut(centreAléatoire(xMax, yMax), rayon, vitesseAléatoire(vMax), Color.gray)))));
-		
+
 		// Bille pilotée
 		Bille billePilotéeRose = new BillePilotée(new BilleRebond(new BilleParDéfaut(centreAléatoire(xMax, yMax), rayon, vitesseAléatoire(vMax), Color.pink)));
 		billes.add(billePilotéeRose);
-		
+
 // */
 //---------------------- ici finit la partie à changer -------------------------------------------------------------
 
@@ -124,7 +116,6 @@ public class TestAngryBalls {
 		AnimationBilles animationBilles = new AnimationBilles(billes, cadre);
 		ApplicationContrôlée app = new ApplicationContrôlée(billes, animationBilles, cadre);
 		app.addObserver((Observer) billePilotéeRose);
-		app.addObserver((Observer) billePilotéeCyan);
 
 //----------------------- mise en place des écouteurs de boutons qui permettent de contrôler (un peu...) l'application -----------------
 

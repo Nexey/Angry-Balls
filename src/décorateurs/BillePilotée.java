@@ -17,12 +17,14 @@ public class BillePilotée extends DécorateurBille implements Observer {
 	@Override
 	public void update(Observable o, Object arg) {
 		MouseEvent event;
-		if (arg instanceof MouseEvent) {
+		if (null == arg) System.out.println("relaché");
+		else if (arg instanceof MouseEvent) {
 			event = (MouseEvent) arg;
 			
 			Vecteur pos = new Vecteur(event.getX(), event.getY());
 			if (Geop.appartientDisque(pos, this.getPosition(), this.getRayon())) {
 				System.out.println("touché");
+				// Changement du comportement ici
 			}
 		}
 	}

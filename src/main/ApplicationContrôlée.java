@@ -102,21 +102,8 @@ public class ApplicationContrôlée extends Application implements MouseInputListe
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		this.setChanged();
-		this.notifyObservers(e);
+		this.notifyObservers();
 		this.contrôleurCliqueCourant.actionDétectée(e);
-	}
-
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		// this.controleurCourant.actionDétectée(e);
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent e) {
-	}
-
-	@Override
-	public void mouseExited(MouseEvent e) {
 	}
 
 	@Override
@@ -127,12 +114,17 @@ public class ApplicationContrôlée extends Application implements MouseInputListe
 	@Override
 	public void mouseDragged(MouseEvent e) {
 		System.out.println("Mouse dragged");
-		
 	}
 
 	@Override
-	public void mouseMoved(MouseEvent e) {
-		// System.out.println("Mouse moved");
-		
-	}
+	public void mouseMoved(MouseEvent e) {}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {}
+
+	@Override
+	public void mouseExited(MouseEvent e) {}
 }
