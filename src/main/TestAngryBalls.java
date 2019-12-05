@@ -76,13 +76,7 @@ public class TestAngryBalls {
 		v3 = Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
 		v4 = Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
 
-//--------------- ici commence la partie à changer ---------------------------------
-		/*
-		billes.add(new BilleMvtRURebond(p0, rayon, v0, Color.red));
-		billes.add(new BilleMvtPesanteurFrottementRebond(p1, rayon, v1, new Vecteur(0, 0.001), Color.yellow));
-		billes.add(new BilleMvtNewtonFrottementRebond(p2, rayon, v2, Color.green));
-		billes.add(new BilleMvtRUPasseMurailles(p3, rayon, v3, Color.cyan));
-		billes.add(new BilleMvtNewtonArret(p4, rayon, v4, Color.black)); // */
+//--------------- création des billes ---------------------------------
 		
 		
 		// Bille qui rebondit
@@ -115,16 +109,6 @@ public class TestAngryBalls {
 		AnimationBilles animationBilles = new AnimationBilles(billes, cadre);
 		ApplicationContrôlée app = new ApplicationContrôlée(billes, animationBilles, cadre);
 		app.addObserver((Observer) billePilotéeRose);
-
-//----------------------- mise en place des écouteurs de boutons qui permettent de contrôler (un peu...) l'application -----------------
-
-//		EcouteurBoutonLancer écouteurBoutonLancer = new EcouteurBoutonLancer(animationBilles);
-//		EcouteurBoutonArreter écouteurBoutonArrêter = new EcouteurBoutonArreter(animationBilles);
-
-//------------------------- activation des écouteurs des boutons et ça tourne tout seul ------------------------------
-
-//		cadre.lancerBilles.addActionListener(écouteurBoutonLancer); // maladroit : à changer
-//		cadre.arrêterBilles.addActionListener(écouteurBoutonArrêter); // maladroit : à changer
 	}
 
 }

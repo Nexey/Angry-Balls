@@ -35,12 +35,6 @@ public abstract class DécorateurBille extends Bille {
 		return this.billeDécorée.getClef();
 	}
 	
-	// Remplacé par un visiteur
-	@Override
-	public void dessine(Graphics g) {
-		this.billeDécorée.dessine(g);
-	}
-	
 	@Override
 	public Vecteur getAccélération() {
 		return this.billeDécorée.getAccélération();

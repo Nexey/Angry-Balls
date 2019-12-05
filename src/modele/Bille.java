@@ -70,12 +70,6 @@ public abstract class Bille {
 		IVisiteur visiteurDéplacement = new VisiteurDéplacementBille(deltaT);
 		this.accepte(visiteurDéplacement);
 	}
-
-	
-	public void dessine(Graphics g) {
-		IVisiteur visiteurDessin = new VisiteurDessinBille(g);
-		this.accepte(visiteurDessin);
-	}
 	
 	/**
 	 * gestion de l'éventuelle collision de la bille (this) avec le contour

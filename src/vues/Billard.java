@@ -6,6 +6,8 @@ import java.util.Vector;
 import javax.swing.JPanel;
 
 import modele.Bille;
+import visiteurs.IVisiteur;
+import visiteurs.VisiteurDessinBille;
 
 /**
  * responsable du dessin des billes
@@ -31,10 +33,12 @@ public class Billard extends JPanel {
 	@Override
 	public void paintComponent(Graphics graphics) {
 		super.paintComponent(graphics);
+
+		IVisiteur visiteurDessin = new VisiteurDessinBille(graphics);
 		int i;
 
 		for (i = 0; i < this.billes.size(); ++i)
-			this.billes.get(i).dessine(graphics);
+			this.billes.get(i).accepte(visiteurDessin);
 		
 		// System.out.println("billes dans le billard = " + billes);
 	}
