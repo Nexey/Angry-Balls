@@ -6,9 +6,6 @@ import java.util.Vector;
 import mesmaths.cinematique.Cinematique;
 import mesmaths.geometrie.base.Vecteur;
 import visiteurs.IVisiteur;
-import visiteurs.VisiteurCollisionBille;
-import visiteurs.VisiteurDessinBille;
-import visiteurs.VisiteurDéplacementBille;
 
 /**
  * Cas général d'une bille de billard
@@ -52,8 +49,7 @@ public abstract class Bille {
 	 */
 	
 	public boolean gestionCollisionBilleBille(Vector<Bille> billes) {
-		IVisiteur visiteurCollision = new VisiteurCollisionBille(billes);
-		return this.accepte(visiteurCollision);
+		return OutilsBille.gestionCollisionBilleBille(this, billes);
 	}
 
 	/**
@@ -67,8 +63,7 @@ public abstract class Bille {
 	 * La bille subit par défaut un mouvement uniformément accéléré
 	 */
 	public void déplacer(double deltaT) {
-		IVisiteur visiteurDéplacement = new VisiteurDéplacementBille(deltaT);
-		this.accepte(visiteurDéplacement);
+		Cinematique.mouvementUniformémentAccéléré(this.getPosition(), this.getVitesse(), this.getAccélération(), deltaT);
 	}
 	
 	/**

@@ -33,7 +33,7 @@ public class CadreAngryBalls extends JFrame implements VueBillard {
 		Outils.place(this, 0.33, 0.33, 0.5, 0.5);
 		
 		this.ecouteurTerminaison = new EcouteurTerminaison(this);
-
+		
 		this.haut = new Panel();
 		this.haut.setBackground(Color.LIGHT_GRAY);
 		this.add(this.haut, BorderLayout.NORTH);
