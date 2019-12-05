@@ -1,6 +1,5 @@
 package vues;
 
-import java.awt.Canvas;
 import java.awt.Graphics;
 import java.util.Vector;
 
@@ -15,6 +14,7 @@ import modele.Bille;
  * 
  * 
  */
+@SuppressWarnings("serial")
 public class Billard extends JPanel {
 	Vector<Bille> billes;
 
@@ -32,10 +32,10 @@ public class Billard extends JPanel {
 	public void paintComponent(Graphics graphics) {
 		super.paintComponent(graphics);
 		int i;
-		
+
 		for (i = 0; i < this.billes.size(); ++i)
 			this.billes.get(i).dessine(graphics);
-
+		
 		// System.out.println("billes dans le billard = " + billes);
 	}
 

@@ -5,6 +5,8 @@ import java.util.Vector;
 
 import mesmaths.cinematique.Cinematique;
 import mesmaths.geometrie.base.Vecteur;
+import visiteurs.IVisiteur;
+import visiteurs.VisiteurDessinBille;
 
 /**
  * Cas général d'une bille de billard
@@ -21,13 +23,17 @@ public abstract class Bille {
 	
 	public Bille() {
 		this.clef = Bille.prochaineClef++;
-		
 	}
 
 	/**
 	 * @return the clef
 	 */
 	public abstract int getClef();
+	
+	
+	public boolean accepte(IVisiteur visiteur) {
+		return visiteur.visite(this);
+	}
 	
 	/**
 	 * gestion de l'éventuelle collision de cette bille avec les autres billes
@@ -86,20 +92,10 @@ public abstract class Bille {
 
 	public abstract Color getCouleur();
 
-	// TODO : Modifier ça par un visiteur
+	// Remplacé par un visiteur
 	public void dessine(Graphics g) {
-		int width, height;
-		int xMin, yMin;
-
-		xMin = (int) Math.round(getPosition().x - getRayon());
-		yMin = (int) Math.round(getPosition().y - getRayon());
-
-		width = height = 2 * (int) Math.round(getRayon());
-
-		g.setColor(getCouleur());
-		g.fillOval(xMin, yMin, width, height);
-		g.setColor(Color.CYAN);
-		g.drawOval(xMin, yMin, width, height);
+		VisiteurDessinBille visiteurDessin = new VisiteurDessinBille(g);
+		this.accepte(visiteurDessin);
 	}
 	
 	public String toString() {

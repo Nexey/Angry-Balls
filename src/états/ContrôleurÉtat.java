@@ -31,20 +31,19 @@ public abstract class ContrÙleur…tat {
 
 	public abstract void actionDÈtectÈe(Object e);
 
-	/*
 	public void ÈtatSuivant() {
 		if (suivant != null) {
-			application.setControleurBoutonCourant(suivant);
+		//	application.setControleurBoutonCourant(suivant);
 			suivant.surChangement…tat();
 		}
 	}
 
 	public void ÈtatRetour() {
 		if (retour != null) {
-			application.setControleurBoutonCourant(retour);
+		//	application.setControleurBoutonCourant(retour);
 			retour.surChangement…tat();
 		}
-	}*/
+	}
 	
 	public abstract void traite();
 

@@ -20,42 +20,53 @@ import états.ContrôleurÉtat;
 public class ApplicationContrôlée extends Application implements MouseListener, ActionListener {
 	protected ContrôleurÉtat contrôleurBoutonCourant;
 	protected ContrôleurÉtat contrôleurCliqueCourant;
-	ContrôleurCliqueEnfoncé contrôleurCliqueEnfoncé;
-	ContrôleurCliqueRelaché contrôleurCliqueRelaché;
-	ContrôleurBoutonLancer contrôleurBoutonLancer;
-	ContrôleurBoutonArrêter contrôleurBoutonArrêter;
-	AnimationBilles animationBilles;
+	protected ContrôleurCliqueEnfoncé contrôleurCliqueEnfoncé;
+	protected ContrôleurCliqueRelaché contrôleurCliqueRelaché;
+	protected ContrôleurBoutonLancer contrôleurBoutonLancer;
+	protected ContrôleurBoutonArrêter contrôleurBoutonArrêter;
+	protected AnimationBilles animationBilles;
+	protected boolean jeuLancé;
+	
 
 	public ApplicationContrôlée(Vector<Bille> billes, AnimationBilles animationBilles, CadreAngryBalls cadreAngryBalls) {
 		super(billes);
 		this.animationBilles = animationBilles;
+		this.jeuLancé = false;
 		cadreAngryBalls.billard.addMouseListener(this);
 		cadreAngryBalls.lancerBilles.addActionListener(this);
 		cadreAngryBalls.arrêterBilles.addActionListener(this);
 		installeContrôleurs(cadreAngryBalls);
 	}
-
+	
 	/*
 	 * construit le graphe orienté correspondant au diagramme de transition d'états.
 	 * Rappelons que chaque état est géré par un contrôleur d'état. Il faut donc
 	 * autant de contrôleurs que d'états + le contrôleur courant
 	 */
 	private void installeContrôleurs(CadreAngryBalls cadreAngryBalls) {
-		
-		
 		this.contrôleurCliqueEnfoncé = new ContrôleurCliqueEnfoncé(this);
 		this.contrôleurCliqueRelaché = new ContrôleurCliqueRelaché(this, contrôleurCliqueEnfoncé, contrôleurCliqueEnfoncé);
 		this.contrôleurCliqueEnfoncé.setSuivant(contrôleurCliqueRelaché);
 		this.contrôleurCliqueEnfoncé.setRetour(contrôleurCliqueRelaché);
 		this.setContrôleurCliqueCourant(contrôleurCliqueEnfoncé);
 		
-		
-		
 		this.contrôleurBoutonLancer = new ContrôleurBoutonLancer(cadreAngryBalls.lancerBilles, this.animationBilles, this);
 		this.contrôleurBoutonArrêter = new ContrôleurBoutonArrêter(cadreAngryBalls.arrêterBilles, this.animationBilles, this, contrôleurBoutonLancer, contrôleurBoutonLancer);
 		this.contrôleurBoutonLancer.setSuivant(this.contrôleurBoutonArrêter);
 		this.contrôleurBoutonLancer.setRetour(this.contrôleurBoutonArrêter);
 		this.setContrôleurBoutonCourant(contrôleurBoutonLancer);
+	}
+
+	public boolean isJeuLancé() {
+		return jeuLancé;
+	}
+
+	public void setJeuLancé(boolean jeuLancé) {
+		this.jeuLancé = jeuLancé;
+	}
+	
+	public void majJeu() {
+		this.jeuLancé = !this.jeuLancé;
 	}
 	
 	public ContrôleurÉtat getContrôleurBoutonCourant() {
@@ -73,7 +84,6 @@ public class ApplicationContrôlée extends Application implements MouseListener, 
 	public void setContrôleurCliqueCourant(ContrôleurÉtat contrôleurCliqueCourant) {
 		this.contrôleurCliqueCourant = contrôleurCliqueCourant;
 	}
-
 	
 	@Override
 	public void mousePressed(MouseEvent e) {
