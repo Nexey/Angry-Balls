@@ -1,22 +1,24 @@
-package 閠ats;
+package 茅tats;
 
 import java.awt.Button;
 
 import main.AnimationBilles;
-import main.ApplicationContr鬺閑;
+import main.ApplicationContr么l茅e;
+import modele.BoutonAvecIcones;
 
-public class Contr鬺eurBoutonArr阾er extends Contr鬺eurBouton {
+public class Contr么leurBoutonArr锚ter extends Contr么leurBouton {
 
-	public Contr鬺eurBoutonArr阾er(Button source, AnimationBilles animationBilles, ApplicationContr鬺閑 application) {
+	public Contr么leurBoutonArr锚ter(BoutonAvecIcones source, AnimationBilles animationBilles, ApplicationContr么l茅e application) {
 		this(source, animationBilles, application, null, null);
 	}
 
-	public Contr鬺eurBoutonArr阾er(Button source, AnimationBilles animationBilles, ApplicationContr鬺閑 application, Contr鬺eur蓆at suivant, Contr鬺eur蓆at retour) {
+	public Contr么leurBoutonArr锚ter(BoutonAvecIcones source, AnimationBilles animationBilles, ApplicationContr么l茅e application, Contr么leur脡tat suivant, Contr么leur脡tat retour) {
 		super(source, animationBilles, application, suivant, retour);
 	}
 	
 	@Override
 	public void traite() {
-		this.animationBilles.arr阾erAnimation();
+		this.animationBilles.arr锚terAnimation();
+		this.source.setIcon(this.source.getIcone("Lancer"));
 	}
 }

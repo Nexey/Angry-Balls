@@ -94,7 +94,7 @@ public abstract class Bille {
 
 	// Remplacé par un visiteur
 	public void dessine(Graphics g) {
-		VisiteurDessinBille visiteurDessin = new VisiteurDessinBille(g);
+		IVisiteur visiteurDessin = new VisiteurDessinBille(g);
 		this.accepte(visiteurDessin);
 	}
 	

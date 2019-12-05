@@ -6,6 +6,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Vector;
 
+import javax.swing.ImageIcon;
+
 import modele.Bille;
 import vues.Application;
 import vues.CadreAngryBalls;
@@ -33,8 +35,12 @@ public class ApplicationContrôlée extends Application implements MouseListener, 
 		this.animationBilles = animationBilles;
 		this.jeuLancé = false;
 		cadreAngryBalls.billard.addMouseListener(this);
-		cadreAngryBalls.lancerBilles.addActionListener(this);
-		cadreAngryBalls.arrêterBilles.addActionListener(this);
+		cadreAngryBalls.boutonJeu.addActionListener(this);
+		// cadreAngryBalls.arrêterBilles.addActionListener(this);
+
+		cadreAngryBalls.boutonJeu.addIcone("Lancer", new ImageIcon("src/assets/lancer.png"));
+		cadreAngryBalls.boutonJeu.addIcone("Arrêter", new ImageIcon("src/assets/pause.png"));
+		cadreAngryBalls.boutonJeu.setIcon(cadreAngryBalls.boutonJeu.getIcone("Lancer"));
 		installeContrôleurs(cadreAngryBalls);
 	}
 	
@@ -50,8 +56,8 @@ public class ApplicationContrôlée extends Application implements MouseListener, 
 		this.contrôleurCliqueEnfoncé.setRetour(contrôleurCliqueRelaché);
 		this.setContrôleurCliqueCourant(contrôleurCliqueEnfoncé);
 		
-		this.contrôleurBoutonLancer = new ContrôleurBoutonLancer(cadreAngryBalls.lancerBilles, this.animationBilles, this);
-		this.contrôleurBoutonArrêter = new ContrôleurBoutonArrêter(cadreAngryBalls.arrêterBilles, this.animationBilles, this, contrôleurBoutonLancer, contrôleurBoutonLancer);
+		this.contrôleurBoutonLancer = new ContrôleurBoutonLancer(cadreAngryBalls.boutonJeu, this.animationBilles, this);
+		this.contrôleurBoutonArrêter = new ContrôleurBoutonArrêter(cadreAngryBalls.boutonJeu, this.animationBilles, this, contrôleurBoutonLancer, contrôleurBoutonLancer);
 		this.contrôleurBoutonLancer.setSuivant(this.contrôleurBoutonArrêter);
 		this.contrôleurBoutonLancer.setRetour(this.contrôleurBoutonArrêter);
 		this.setContrôleurBoutonCourant(contrôleurBoutonLancer);

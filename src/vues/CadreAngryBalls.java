@@ -6,7 +6,7 @@ import java.util.Vector;
 import javax.swing.JFrame;
 
 import modele.Bille;
-
+import modele.BoutonAvecIcones;
 import outilsvues.EcouteurTerminaison;
 
 import outilsvues.Outils;
@@ -22,8 +22,9 @@ import outilsvues.Outils;
 public class CadreAngryBalls extends JFrame implements VueBillard {
 	TextField présentation;
 	public Billard billard;
-	public Button lancerBilles, arrêterBilles;
+//	public Button boutonJeu, arrêterBilles;
 	Panel haut, centre, bas;
+	public BoutonAvecIcones boutonJeu;
 
 	EcouteurTerminaison ecouteurTerminaison;
 
@@ -51,10 +52,11 @@ public class CadreAngryBalls extends JFrame implements VueBillard {
 		this.billard = new Billard(billes);
 		this.add(this.billard);
 
-		this.lancerBilles = new Button("lancer les billes");
-		this.bas.add(this.lancerBilles);
-		this.arrêterBilles = new Button("arrêter les billes");
-		this.bas.add(this.arrêterBilles);
+		this.boutonJeu = new BoutonAvecIcones();
+		this.bas.add(this.boutonJeu);
+		//this.boutonJeu = new Button("lancer les billes");
+		//this.arrêterBilles = new Button("arrêter les billes");
+		//this.bas.add(this.arrêterBilles);
 
 	}
 
