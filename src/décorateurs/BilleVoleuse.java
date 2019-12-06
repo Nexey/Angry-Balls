@@ -10,25 +10,28 @@ import modele.Bille;
 import modele.BilleParDéfaut;
 import modele.OutilsBille;
 
-public class BilleVoleuse extends DécorateurBille {
+public abstract class BilleVoleuse extends DécorateurBille {
 
 	public BilleVoleuse(Bille billeDécorée) {
 		super(billeDécorée);
 	}
+	
+	public abstract boolean appliquerVol(Vector<Bille> billes, Bille billeVolée);
 
 	
 	// Grosse redondance avec BilleMalade, c'est plus pour l'aspect drôle que j'ai fait ceci
 	@Override
 	public boolean gestionCollisionBilleBille(Vector<Bille> billes) {
-		boolean resu = super.gestionCollisionBilleBille(billes);
+		boolean resu = this.billeDécorée.gestionCollisionBilleBille(billes);
 		
 		if (resu) {
 			Vector<Bille> autreBille = OutilsBille.autresBilles(this, billes);
 			for (Bille bille : autreBille) {
 				if (Geop.intersectionCercleCercle(this.getPosition(), this.getRayon()*2, bille.getPosition(), bille.getRayon())) {
-					Vecteur temp = new Vecteur(this.getPosition());
-					this.getPosition().set(new Vecteur(bille.getPosition()));
-					bille.getPosition().set(temp);
+					return appliquerVol(billes, bille);
+					// Vecteur temp = new Vecteur(this.getPosition());
+					// this.getPosition().set(new Vecteur(bille.getPosition()));
+					// bille.getPosition().set(temp);
 				}
 			}
 		}

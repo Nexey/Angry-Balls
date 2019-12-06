@@ -48,7 +48,7 @@ public class TestAngryBalls {
 //------------- remplissage de la liste avec 4 billes -------------------------------
 
 		double xMax, yMax;
-		double vMax = 0.1;
+		double vMax = 0.05;
 		xMax = cadre.largeurBillard(); // abscisse maximal
 		yMax = cadre.hauteurBillard(); // ordonnée maximale
 
@@ -67,19 +67,31 @@ public class TestAngryBalls {
 		p2 = Vecteur.créationAléatoire(0, 0, xMax, yMax);
 		p3 = Vecteur.créationAléatoire(0, 0, xMax, yMax);
 		p4 = Vecteur.créationAléatoire(0, 0, xMax, yMax);
-		
+
 		double scale = 20;
-		Vecteur p5 = new Vecteur(3 * xMax / scale, 5 * yMax / scale);
+		Vecteur p5 = new Vecteur(3 * xMax / scale, 10 * yMax / scale);
+		/*
 		Vecteur p6 = new Vecteur(5. * xMax / scale, 5 * yMax / scale);
 		Vecteur p7 = new Vecteur(6. * xMax / scale, 5 * yMax / scale);
 		Vecteur p8 = new Vecteur(7. * xMax / scale, 5 * yMax / scale);
-		Vecteur p9 = new Vecteur(6. * xMax / scale, 3*yMax / scale);
-		Vecteur p10 = new Vecteur(7. * xMax / scale, 3*yMax / scale);
-		Vecteur p11 = new Vecteur(7. * xMax / scale, 1*yMax / scale);
+		Vecteur p9 = new Vecteur(6. * xMax / scale, 3 * yMax / scale);
+		Vecteur p10 = new Vecteur(7. * xMax / scale, 3 * yMax / scale);
+		Vecteur p11 = new Vecteur(7. * xMax / scale, 1 * yMax / scale);
 
-		Vecteur p12 = new Vecteur(6. * xMax / scale, 7*yMax / scale);
-		Vecteur p13 = new Vecteur(7. * xMax / scale, 7*yMax / scale);
-		Vecteur p14 = new Vecteur(7. * xMax / scale, 9*yMax / scale);
+		Vecteur p12 = new Vecteur(6. * xMax / scale, 7 * yMax / scale);
+		Vecteur p13 = new Vecteur(7. * xMax / scale, 7 * yMax / scale);
+		Vecteur p14 = new Vecteur(7. * xMax / scale, 9 * yMax / scale);
+		*/
+
+		Vecteur p6 = new Vecteur(5. * xMax / scale, 5 * yMax / scale);
+		Vecteur p7 = new Vecteur(6. * xMax / scale, 5 * yMax / scale);
+		Vecteur p8 = new Vecteur(7. * xMax / scale, 5 * yMax / scale);
+		Vecteur p9 = new Vecteur(8. * xMax / scale, 5 * yMax / scale);
+		Vecteur p10 = new Vecteur(9. * xMax / scale, 5 * yMax / scale);
+		Vecteur p11 = new Vecteur(10. * xMax / scale, 5 * yMax / scale);
+		Vecteur p12 = new Vecteur(11. * xMax / scale, 5 * yMax / scale);
+		Vecteur p13 = new Vecteur(12. * xMax / scale, 5 * yMax / scale);
+		Vecteur p14 = new Vecteur(13. * xMax / scale, 5 * yMax / scale);
 
 //------------------- création des vecteurs vitesse des billes ---------------------------------
 
@@ -92,31 +104,25 @@ public class TestAngryBalls {
 //--------------- création des billes ---------------------------------
 
 		// Bille qui rebondit
-		// billes.add(new BilleRebond(new BilleParDéfaut(centreAléatoire(xMax, yMax),
-		// rayon, vitesseAléatoire(vMax), Color.black)));
+		// billes.add(new BilleRebond(new BilleParDéfaut(centreAléatoire(xMax, yMax), rayon, vitesseAléatoire(vMax), Color.black)));
 
 		// Bille qui poursuit les autres
-		// billes.add(new BilleNewton(new BilleRebond(new
-		// BilleParDéfaut(centreAléatoire(xMax, yMax), rayon, vitesseAléatoire(vMax),
-		// Color.green))));
+		// billes.add(new BilleNewton(new BilleRebond(new BilleParDéfaut(centreAléatoire(xMax, yMax), rayon, vitesseAléatoire(vMax), Color.green))));
 
 		// Billes passe muraille avec une qui a du frottement
-		// billes.add(new BillePasseMuraille(new BilleParDéfaut(centreAléatoire(xMax,
-		// yMax), rayon, vitesseAléatoire(vMax), Color.cyan)));
-		// billes.add(new BilleFrottement(new BillePasseMuraille(new
-		// BilleParDéfaut(centreAléatoire(xMax, yMax), rayon, vitesseAléatoire(vMax),
-		// Color.blue))));
+		// billes.add(new BillePasseMuraille(new BilleParDéfaut(centreAléatoire(xMax, yMax), rayon, vitesseAléatoire(vMax), Color.cyan)));
+		// billes.add(new BilleFrottement(new BillePasseMuraille(new BilleParDéfaut(centreAléatoire(xMax, yMax), rayon, vitesseAléatoire(vMax), Color.blue))));
 
 		// Bille qui a de la pesanteur ET du frottement
-		// billes.add(new BilleFrottement(new BillePesanteur(new Vecteur(0, 0.001), new
-		// BilleRebond(new BilleParDéfaut(centreAléatoire(xMax, yMax), rayon,
-		// vitesseAléatoire(vMax), Color.white)))));
+		// billes.add(new BilleFrottement(new BillePesanteur(new Vecteur(0, 0.001), new BilleRebond(new BilleParDéfaut(centreAléatoire(xMax, yMax), rayon, vitesseAléatoire(vMax), Color.white)))));
 
 		// Bille qui a un arrêt et qui est newton
-		// billes.add(new BilleNewton(new BilleArrêt(new BilleRebond(new
-		// BilleParDéfaut(centreAléatoire(xMax, yMax), rayon, vitesseAléatoire(vMax),
-		// Color.gray)))));
-
+		// billes.add(new BilleNewton(new BilleArrêt(new BilleRebond(new BilleParDéfaut(centreAléatoire(xMax, yMax), rayon, vitesseAléatoire(vMax), Color.gray)))));
+		// Bille pilotée
+		Bille billeLancePierreRose = new BilleLancePierre(/* new BillePesanteur(new Vecteur(0, 0.001), */ new BilleVoleuseDeTaille(new BilleFrottement(new BilleRebond(new BilleParDéfaut(p5, rayon * 2, Color.pink)))))/* ) */;
+		billes.add(billeLancePierreRose);
+		
+		/*
 		billes.add(new BilleFrottement(new BilleRebond(new BilleParDéfaut(p6, rayon, Color.black))));
 		billes.add(new BilleFrottement(new BilleRebond(new BilleParDéfaut(p7, rayon, Color.black))));
 		billes.add(new BilleFrottement(new BilleRebond(new BilleParDéfaut(p8, rayon, Color.black))));
@@ -125,12 +131,18 @@ public class TestAngryBalls {
 		billes.add(new BilleFrottement(new BilleRebond(new BilleParDéfaut(p11, rayon, Color.black))));
 		billes.add(new BilleFrottement(new BilleRebond(new BilleParDéfaut(p12, rayon, Color.black))));
 		billes.add(new BilleFrottement(new BilleRebond(new BilleParDéfaut(p13, rayon, Color.black))));
-		billes.add(new BilleVoleuse(new BilleFrottement(new BilleRebond(new BilleParDéfaut(p14, rayon, Color.blue)))));
+		billes.add(new BilleMalade(new BilleFrottement(new BilleRebond(new BilleParDéfaut(p14, rayon, Color.blue)))));
+		// */
 		
-		// Bille pilotée
-		Bille billePilotéeRose = new BillePilotée(/* new BillePesanteur(new Vecteur(0, 0.001), */ new BilleFrottement(new BilleRebond(new BilleParDéfaut(p5, rayon*2, Color.pink))))/* ) */;
-		billes.add(billePilotéeRose);
-		
+		billes.add(new BilleNewton(new BilleVoleuseDeTaille(0.2, new BilleArrêt(new BilleParDéfaut(p6, rayon, Color.black)))));
+		/*
+		for (int x = 6; x < 32; x++) {
+			for (int y = 5; y < 29; y = y+2) {
+				billes.add(new BilleRebond(new BilleFrottement(new BilleRebond(new BilleParDéfaut(new Vecteur(x * xMax / scale, y * yMax / scale), rayon, Color.black)))));
+			}
+		}
+		// */
+
 // */
 //---------------------- ici finit la partie à changer -------------------------------------------------------------
 
@@ -140,7 +152,7 @@ public class TestAngryBalls {
 
 		AnimationBilles animationBilles = new AnimationBilles(billes, cadre);
 		ApplicationContrôlée app = new ApplicationContrôlée(billes, animationBilles, cadre);
-		app.addObserver((Observer) billePilotéeRose);
+		app.addObserver((Observer) billeLancePierreRose);
 	}
 
 }

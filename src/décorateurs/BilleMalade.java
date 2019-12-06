@@ -23,7 +23,8 @@ public class BilleMalade extends DécorateurBille {
 			Vector<Bille> autreBille = OutilsBille.autresBilles(this, billes);
 			for (Bille bille : autreBille) {
 				if (Geop.intersectionCercleCercle(this.getPosition(), this.getRayon()*2, bille.getPosition(), bille.getRayon())) {
-					billes.add(new BilleMalade(new BilleRebond(new BilleParDéfaut(bille.getPosition(), bille.getRayon(), bille.getVitesse(), bille.getAccélération(), Color.green))));
+					billes.add(new BilleMalade(bille));
+					bille.setCouleur(Color.green);
 					billes.remove(bille);
 				}
 			}

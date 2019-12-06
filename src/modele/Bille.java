@@ -34,6 +34,8 @@ public abstract class Bille {
 		return visiteur.visite(this);
 	}
 	
+	public abstract void setRayon(double rayon);
+	
 	/**
 	 * gestion de l'éventuelle collision de cette bille avec les autres billes
 	 *

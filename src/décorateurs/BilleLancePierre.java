@@ -8,13 +8,13 @@ import mesmaths.geometrie.base.Vecteur;
 import modele.Bille;
 import modele.InfoClique;
 
-public class BillePilotée extends DécorateurBille implements Observer {
-	protected boolean pilotée;
+public class BilleLancePierre extends DécorateurBille implements Observer {
+	protected boolean tenue;
 	protected Vecteur vecteurDeb;
 
-	public BillePilotée(Bille billeDécorée) {
+	public BilleLancePierre(Bille billeDécorée) {
 		super(billeDécorée);
-		this.pilotée = false;
+		this.tenue = false;
 		this.vecteurDeb = Vecteur.VECTEURNUL;
 	}
 
@@ -29,13 +29,13 @@ public class BillePilotée extends DécorateurBille implements Observer {
 			infoClique = (InfoClique) arg;
 			if (infoClique.isPressed()) {
 				if (Geop.appartientDisque(infoClique.getPositionClique(), this.getPosition(), this.getRayon())) {
-					this.pilotée = true;
+					this.tenue = true;
 					System.out.println("touché");
 					setVecteurDeb(infoClique.getPositionClique());
 				}
 			} else if (infoClique.isReleased()) {
-				if (this.pilotée) {
-					this.pilotée = false;
+				if (this.tenue) {
+					this.tenue = false;
 					Vecteur direction = infoClique.getPositionClique().difference(this.vecteurDeb);
 					// direction = this.vecteurDeb.difference(infoClique.getPositionClique());
 					
@@ -45,9 +45,9 @@ public class BillePilotée extends DécorateurBille implements Observer {
 					nouvelleVitesse.y = direction.y / 10000;
 					
 					this.getAccélération().ajoute(nouvelleVitesse);
-					System.out.println("relaché");
-					System.out.println(this.vecteurDeb + " -> " + infoClique.getPositionClique());
-					System.out.println(direction);
+					// System.out.println("relaché");
+					// System.out.println(this.vecteurDeb + " -> " + infoClique.getPositionClique());
+					// System.out.println(direction);
 					setVecteurDeb(Vecteur.VECTEURNUL);
 				}
 			}
@@ -56,6 +56,6 @@ public class BillePilotée extends DécorateurBille implements Observer {
 
 	@Override
 	public String toString() {
-		return "bille pilotée - " + this.billeDécorée.toString();
+		return "bille lance-pière - " + this.billeDécorée.toString();
 	}
 }

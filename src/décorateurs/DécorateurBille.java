@@ -6,6 +6,7 @@ import java.util.Vector;
 
 import mesmaths.geometrie.base.Vecteur;
 import modele.Bille;
+import modele.OutilsBille;
 
 public abstract class DécorateurBille extends Bille {
 	
@@ -18,6 +19,16 @@ public abstract class DécorateurBille extends Bille {
 	
 	public int getClefDécorateur() {
 		return this.clef;
+	}
+	
+	@Override
+	public boolean gestionCollisionBilleBille(Vector<Bille> billes) {
+		return this.billeDécorée.gestionCollisionBilleBille(billes);
+	}
+	
+	@Override
+	public void setRayon(double rayon) {
+		this.billeDécorée.setRayon(rayon);
 	}
 	
 	@Override

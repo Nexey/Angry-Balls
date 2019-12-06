@@ -62,6 +62,11 @@ public class BilleParDéfaut extends Bille {
 	public double getRayon() {
 		return this.rayon;
 	}
+	
+	@Override
+	public void setRayon(double rayon) {
+		this.rayon = rayon;
+	}
 
 	/**
 	 * @return the vitesse
@@ -94,11 +99,6 @@ public class BilleParDéfaut extends Bille {
 	}
 	
 	@Override
-	public void collisionContour(double abscisseCoinHautGauche, double ordonnéeCoinHautGauche, double largeur, double hauteur) {
-		// Collisions.collisionBilleContourAvecRebond(this.getPosition(), this.getRayon(), this.getVitesse(), abscisseCoinHautGauche, ordonnéeCoinHautGauche, largeur, hauteur);
-	}
-
-	@Override
 	public Color getCouleur() {
 		return couleur;
 	}
@@ -111,4 +111,7 @@ public class BilleParDéfaut extends Bille {
 	public int getClef() {
 		return this.clef;
 	}
+	
+	@Override
+	public void collisionContour(double abscisseCoinHautGauche, double ordonnéeCoinHautGauche, double largeur, double hauteur) {}
 }
