@@ -1,0 +1,47 @@
+\hypertarget{classd_xE9corateurs_1_1_bille_voleuse}{}\doxysection{RÃ©fÃ©rence de la classe décorateurs.\+Bille\+Voleuse}
+\label{classd_xE9corateurs_1_1_bille_voleuse}\index{décorateurs.BilleVoleuse@{décorateurs.BilleVoleuse}}
+Graphe d\textquotesingle{}hÃ©ritage de décorateurs.\+Bille\+Voleuse\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{d0/d6c/classd_xE9corateurs_1_1_bille_voleuse}
+\end{center}
+\end{figure}
+\doxysubsection*{Fonctions membres publiques}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classd_xE9corateurs_1_1_bille_voleuse_ae4f392edfb9212b1e866a7da310ab677}\label{classd_xE9corateurs_1_1_bille_voleuse_ae4f392edfb9212b1e866a7da310ab677}} 
+{\bfseries Bille\+Voleuse} (\mbox{\hyperlink{classmodele_1_1_bille}{Bille}} bille\+Décorée)
+\item 
+\mbox{\Hypertarget{classd_xE9corateurs_1_1_bille_voleuse_ac8a6c110c88efe7c75c3993230484fb1}\label{classd_xE9corateurs_1_1_bille_voleuse_ac8a6c110c88efe7c75c3993230484fb1}} 
+abstract boolean {\bfseries appliquer\+Vol} (Vector$<$ \mbox{\hyperlink{classmodele_1_1_bille}{Bille}} $>$ billes, \mbox{\hyperlink{classmodele_1_1_bille}{Bille}} bille\+Volée)
+\item 
+boolean \mbox{\hyperlink{classd_xE9corateurs_1_1_bille_voleuse_a7663acc761ee559578fa2fa93aefdc1e}{gestion\+Collision\+Bille\+Bille}} (Vector$<$ \mbox{\hyperlink{classmodele_1_1_bille}{Bille}} $>$ billes)
+\end{DoxyCompactItemize}
+\doxysubsection*{Membres hÃ©ritÃ©s additionnels}
+
+
+\doxysubsection{Documentation des fonctions membres}
+\mbox{\Hypertarget{classd_xE9corateurs_1_1_bille_voleuse_a7663acc761ee559578fa2fa93aefdc1e}\label{classd_xE9corateurs_1_1_bille_voleuse_a7663acc761ee559578fa2fa93aefdc1e}} 
+\index{décorateurs.BilleVoleuse@{décorateurs.BilleVoleuse}!gestionCollisionBilleBille@{gestionCollisionBilleBille}}
+\index{gestionCollisionBilleBille@{gestionCollisionBilleBille}!décorateurs.BilleVoleuse@{décorateurs.BilleVoleuse}}
+\doxysubsubsection{\texorpdfstring{gestionCollisionBilleBille()}{gestionCollisionBilleBille()}}
+{\footnotesize\ttfamily boolean décorateurs.\+Bille\+Voleuse.\+gestion\+Collision\+Bille\+Bille (\begin{DoxyParamCaption}\item[{Vector$<$ \mbox{\hyperlink{classmodele_1_1_bille}{Bille}} $>$}]{billes }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+gestion de l\textquotesingle{}éventuelle collision de cette bille avec les autres billes
+
+billes est la liste de toutes les billes en mouvement
+
+Le comportement par défaut est le choc parfaitement élastique (c-\/à-\/d rebond sans amortissement)
+
+\begin{DoxyReturn}{Renvoie}
+true si il y a collision et dans ce cas les positions et vecteurs vitesses des 2 billes impliquées dans le choc sont modifiées si renvoie false, il n\textquotesingle{}y a pas de collision et les billes sont laissées intactes 
+\end{DoxyReturn}
+
+
+RÃ©implÃ©mentÃ©e Ã  partir de \mbox{\hyperlink{classd_xE9corateurs_1_1_d_xE9corateur_bille_afcaa7a786ac330a1a4fa98940baeaa3d}{décorateurs.\+Décorateur\+Bille}}.
+
+
+
+La documentation de cette classe a Ã©tÃ© gÃ©nÃ©rÃ©e Ã  partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+src/dÃ©corateurs/Bille\+Voleuse.\+java\end{DoxyCompactItemize}
