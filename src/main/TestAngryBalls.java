@@ -119,7 +119,7 @@ public class TestAngryBalls {
 		// Bille qui a un arrêt et qui est newton
 		// billes.add(new BilleNewton(new BilleArrêt(new BilleRebond(new BilleParDéfaut(centreAléatoire(xMax, yMax), rayon, vitesseAléatoire(vMax), Color.gray)))));
 		// Bille pilotée
-		Bille billeLancePierreRose = new BilleLancePierre(/* new BillePesanteur(new Vecteur(0, 0.001), */ new BilleVoleuseDeTaille(new BilleFrottement(new BilleRebond(new BilleParDéfaut(p5, rayon * 2, Color.pink)))))/* ) */;
+		Bille billeLancePierreRose = new BillePilotée(/* new BillePesanteur(new Vecteur(0, 0.001), */ new BilleVoleuseDeTaille(new BilleFrottement(new BilleRebond(new BilleParDéfaut(p5, rayon * 2, Color.pink)))))/* ) */;
 		billes.add(billeLancePierreRose);
 		
 		/*
@@ -134,7 +134,7 @@ public class TestAngryBalls {
 		billes.add(new BilleMalade(new BilleFrottement(new BilleRebond(new BilleParDéfaut(p14, rayon, Color.blue)))));
 		// */
 		
-		billes.add(new BilleNewton(new BilleVoleuseDeTaille(0.2, new BilleArrêt(new BilleParDéfaut(p6, rayon, Color.black)))));
+		//billes.add(new BilleNewton(new BilleVoleuseDeTaille(0.2, new BilleArrêt(new BilleParDéfaut(p6, rayon, Color.black)))));
 		/*
 		for (int x = 6; x < 32; x++) {
 			for (int y = 5; y < 29; y = y+2) {

@@ -1,6 +1,6 @@
 package modele;
 
-import java.awt.*;
+import java.awt.Color;
 import java.util.Vector;
 
 import mesmaths.cinematique.Cinematique;

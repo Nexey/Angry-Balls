@@ -1,4 +1,4 @@
-package dÃ©corateurs;
+package décorateurs;
 
 import java.util.Observable;
 import java.util.Observer;
@@ -8,33 +8,32 @@ import mesmaths.geometrie.base.Vecteur;
 import modele.Bille;
 import modele.InfoClique;
 
-public class BilleLancePierre extends BilleCliquable {
-	protected boolean tenue;
-	protected Vecteur vecteurDeb;
+public class BillePilotée extends BilleCliquable {
+	protected Vecteur posCliquePrécédent;
 
-	public BilleLancePierre(Bille billeDÃ©corÃ©e) {
-		super(billeDÃ©corÃ©e);
-		this.tenue = false;
-		this.vecteurDeb = Vecteur.VECTEURNUL;
+	public BillePilotée(Bille billeDécorée) {
+		super(billeDécorée);
 	}
-
-	protected void setVecteurDeb(Vecteur vecteurDeb) {
-		this.vecteurDeb = vecteurDeb;
-	}
-
+	
 	@Override
-	public String toString() {
-		return "bille lance-piÃ¨re - " + this.billeDÃ©corÃ©e.toString();
-	}
-
-	@Override
-	public void gÃ©rerClique(InfoClique infoClique) {
+	public void gérerClique(InfoClique infoClique) {
+		System.out.println(infoClique);
 		if (infoClique.getTypeDeClique() == InfoClique.PRESSE_INITIALE) {
+			posCliquePrécédent = infoClique.getPositionClique();
+		}
+		if (infoClique.getTypeDeClique() == InfoClique.PRESSE_INITIALE) {
+			
+		}
+		if (infoClique.getTypeDeClique() == InfoClique.RELACHÉ) {
+			
+		}
+		/*
+		if (infoClique.getTypeDeClique().equals("pressé")) {
 			if (Geop.appartientDisque(infoClique.getPositionClique(), this.getPosition(), this.getRayon())) {
 				this.tenue = true;
 				setVecteurDeb(infoClique.getPositionClique());
 			}
-		} else if (infoClique.getTypeDeClique() == InfoClique.RELACHÃ‰) {
+		} else if (infoClique.getTypeDeClique().equals("relaché")) {
 			if (this.tenue) {
 				this.tenue = false;
 				Vecteur direction = infoClique.getPositionClique().difference(this.vecteurDeb);
@@ -43,9 +42,10 @@ public class BilleLancePierre extends BilleCliquable {
 				nouvelleVitesse.x = direction.x / 10000;
 				nouvelleVitesse.y = direction.y / 10000;
 
-				this.getAccÃ©lÃ©ration().ajoute(nouvelleVitesse);
+				this.getAccélération().ajoute(nouvelleVitesse);
 				setVecteurDeb(Vecteur.VECTEURNUL);
 			}
 		}
+		*/
 	}
 }

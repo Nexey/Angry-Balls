@@ -3,7 +3,6 @@ package main;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.Vector;
 
 import javax.swing.ImageIcon;
@@ -22,7 +21,7 @@ import états.ContrôleurÉtat;
 
 /* Cette classe se charge de rajouter les observeurs sur l'application */
 
-public class ApplicationContrôlée extends Application implements MouseListener, ActionListener {
+public class ApplicationContrôlée extends Application implements MouseInputListener, ActionListener {
 	protected ContrôleurÉtat contrôleurBoutonCourant;
 	protected ContrôleurÉtat contrôleurCliqueCourant;
 	protected ContrôleurCliqueEnfoncé contrôleurCliqueEnfoncé;
@@ -38,6 +37,8 @@ public class ApplicationContrôlée extends Application implements MouseListener, 
 		this.animationBilles = animationBilles;
 		this.jeuLancé = false;
 		cadreAngryBalls.billard.addMouseListener(this);
+		cadreAngryBalls.billard.addMouseMotionListener(this);
+		
 		cadreAngryBalls.boutonJeu.addActionListener(this);
 
 		cadreAngryBalls.boutonJeu.addIcone("Lancer", new ImageIcon("src/assets/lancer.png"));
@@ -107,15 +108,19 @@ public class ApplicationContrôlée extends Application implements MouseListener, 
 	
 	@Override
 	public void mousePressed(MouseEvent e) {
-		InfoClique infoClique = new InfoClique(this.getCoordsMouseEvent(e));
-		infoClique.updatePressed();
+		InfoClique infoClique = new InfoClique(InfoClique.PRESSE_INITIALE, this.getCoordsMouseEvent(e));
 		this.posHandler(infoClique);
 	}
 	
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		InfoClique infoClique = new InfoClique(this.getCoordsMouseEvent(e));
-		infoClique.updateReleased();
+		InfoClique infoClique = new InfoClique(InfoClique.RELACHÉ, this.getCoordsMouseEvent(e));
+		this.posHandler(infoClique);
+	}
+
+	@Override
+	public void mouseDragged(MouseEvent e) {
+		InfoClique infoClique = new InfoClique(InfoClique.PRESSÉ_BOUGEANT, this.getCoordsMouseEvent(e));
 		this.posHandler(infoClique);
 	}
 	
@@ -132,4 +137,7 @@ public class ApplicationContrôlée extends Application implements MouseListener, 
 
 	@Override
 	public void mouseExited(MouseEvent e) {}
+
+	@Override
+	public void mouseMoved(MouseEvent e) {}
 }
