@@ -8,6 +8,15 @@ import mesmaths.geometrie.base.Vecteur;
 import modele.Bille;
 import modele.OutilsBille;
 
+
+/**
+ * 
+ * Le décorateur de bille
+ * Gère une bille (appelée billeDécorée)
+ * Étends Bille mais les méthodes héritées vont appeler les méthodes de la bille décorée
+ * Permet de créer plein de comportements sans une explosion exponentielle du nombre de sous-classes de Bille
+ * 
+ */
 public abstract class DécorateurBille extends Bille {
 	
 	protected Bille billeDécorée;

@@ -9,10 +9,6 @@ import visiteurs.IVisiteur;
 
 /**
  * Cas général d'une bille de billard
- * 
- * A MODIFIER
- * 
- * 
  */
 public abstract class Bille {
 //----------------- classe Bille-------------------------------------

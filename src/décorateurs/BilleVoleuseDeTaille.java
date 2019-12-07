@@ -16,6 +16,12 @@ public class BilleVoleuseDeTaille extends BilleVoleuse {
 		this.pourcentage = pourcentage;
 	}
 
+
+	/**
+	 * @param billes		la liste de billes pour possiblement supprimer la bille volée si elle est trop petite
+	 * @param billeVolée	la bille qui va perdre un pourcentage de son rayon
+	 * la taille considérée trop petite ainsi que le pourcentage sont arbitraires
+	 */
 	@Override
 	public boolean appliquerVol(Vector<Bille> billes, Bille billeVolée) {
 		double nouveauRayonBilleVolée = billeVolée.getRayon() * (1 - this.pourcentage);

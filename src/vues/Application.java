@@ -5,6 +5,9 @@ import java.util.Vector;
 
 import modele.Bille;
 
+/**
+ * L'application contenant les données de base du jeu
+ */
 public abstract class Application extends Observable {
     public Vector<Bille> billes;
     

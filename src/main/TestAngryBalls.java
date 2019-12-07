@@ -82,7 +82,7 @@ public class TestAngryBalls {
 		Vecteur p13 = new Vecteur(7. * xMax / scale, 7 * yMax / scale);
 		Vecteur p14 = new Vecteur(7. * xMax / scale, 9 * yMax / scale);
 		*/
-
+		
 		Vecteur p6 = new Vecteur(5. * xMax / scale, 5 * yMax / scale);
 		Vecteur p7 = new Vecteur(6. * xMax / scale, 5 * yMax / scale);
 		Vecteur p8 = new Vecteur(7. * xMax / scale, 5 * yMax / scale);

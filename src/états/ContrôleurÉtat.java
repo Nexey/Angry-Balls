@@ -2,6 +2,14 @@ package états;
 
 import main.ApplicationContrôlée;
 
+
+/**
+ *
+ * Le contrôleur d'état générique
+ * Il contrôle une ApplicationContrôlée (Ceci est mauvais, il devrait contrôler une application générique)
+ * Permet de vérifier les différents aspects du jeu
+ * 
+ */
 public abstract class ContrôleurÉtat {
 	public ApplicationContrôlée application;
 	public ContrôleurÉtat suivant, retour; // lien vers l'état suivant ou vers l'état précédent

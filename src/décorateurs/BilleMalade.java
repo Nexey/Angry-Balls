@@ -15,6 +15,10 @@ public class BilleMalade extends DécorateurBille {
 	}
 
 
+
+	/**
+	 * @param billes		la liste de billes à tester pour voir laquelle rendre malade
+	 */
 	@Override
 	public boolean gestionCollisionBilleBille(Vector<Bille> billes) {
 		boolean resu = super.gestionCollisionBilleBille(billes);

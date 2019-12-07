@@ -6,6 +6,14 @@ import java.util.Vector;
 import mesmaths.geometrie.base.Geop;
 import mesmaths.geometrie.base.Vecteur;
 
+/**
+ * 
+ * La bille par défaut
+ * Une bille par défaut peut être initialisée sans vitesse
+ * Elle ne rebondit pas contre les rebords et peut donc sortir du billard, il faut
+ * prévoir l'ajout de décorateur pour l'en empêcher
+ * 
+ */
 public class BilleParDéfaut extends Bille {
 	public Vecteur position; // centre de la bille
 	public double rayon; // rayon > 0

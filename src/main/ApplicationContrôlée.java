@@ -15,22 +15,25 @@ import vues.Application;
 import vues.CadreAngryBalls;
 import états.ContrôleurBoutonArrêter;
 import états.ContrôleurBoutonLancer;
-import états.ContrôleurCliqueEnfoncé;
-import états.ContrôleurCliqueRelaché;
+import états.ContrôleurCliqueBillard;
 import états.ContrôleurÉtat;
 
 /* Cette classe se charge de rajouter les observeurs sur l'application */
 
+/**
+ * 
+ * Permet de décharger le main d'une grosse partie des données
+ * C'est cette classe qui génère les données sur les aspects du jeu (comme les boutons)
+ * 
+ */
 public class ApplicationContrôlée extends Application implements MouseInputListener, ActionListener {
 	protected ContrôleurÉtat contrôleurBoutonCourant;
 	protected ContrôleurÉtat contrôleurCliqueCourant;
-	protected ContrôleurCliqueEnfoncé contrôleurCliqueEnfoncé;
-	protected ContrôleurCliqueRelaché contrôleurCliqueRelaché;
+	protected ContrôleurCliqueBillard contrôleurCliqueBillard;
 	protected ContrôleurBoutonLancer contrôleurBoutonLancer;
 	protected ContrôleurBoutonArrêter contrôleurBoutonArrêter;
 	protected AnimationBilles animationBilles;
 	protected boolean jeuLancé;
-	
 
 	public ApplicationContrôlée(Vector<Bille> billes, AnimationBilles animationBilles, CadreAngryBalls cadreAngryBalls) {
 		super(billes);
@@ -38,7 +41,6 @@ public class ApplicationContrôlée extends Application implements MouseInputListe
 		this.jeuLancé = false;
 		cadreAngryBalls.billard.addMouseListener(this);
 		cadreAngryBalls.billard.addMouseMotionListener(this);
-		
 		cadreAngryBalls.boutonJeu.addActionListener(this);
 
 		cadreAngryBalls.boutonJeu.addIcone("Lancer", new ImageIcon("src/assets/lancer.png"));
@@ -49,17 +51,17 @@ public class ApplicationContrôlée extends Application implements MouseInputListe
 		installeContrôleurs(cadreAngryBalls);
 	}
 	
-	/*
+	/**
+	 * @param cadreAngryBalls     le cadre contenant le jeu
 	 * construit le graphe orienté correspondant au diagramme de transition d'états.
 	 * Rappelons que chaque état est géré par un contrôleur d'état. Il faut donc
 	 * autant de contrôleurs que d'états + le contrôleur courant
 	 */
 	private void installeContrôleurs(CadreAngryBalls cadreAngryBalls) {
-		this.contrôleurCliqueEnfoncé = new ContrôleurCliqueEnfoncé(this);
-		this.contrôleurCliqueRelaché = new ContrôleurCliqueRelaché(this, contrôleurCliqueEnfoncé, contrôleurCliqueEnfoncé);
-		this.contrôleurCliqueEnfoncé.setSuivant(contrôleurCliqueRelaché);
-		this.contrôleurCliqueEnfoncé.setRetour(contrôleurCliqueRelaché);
-		this.setContrôleurCliqueCourant(contrôleurCliqueEnfoncé);
+		this.contrôleurCliqueBillard = new ContrôleurCliqueBillard(this);
+		this.contrôleurCliqueBillard.setSuivant(contrôleurCliqueBillard);
+		this.contrôleurCliqueBillard.setRetour(contrôleurCliqueBillard);
+		this.setContrôleurCliqueCourant(contrôleurCliqueBillard);
 		
 		this.contrôleurBoutonLancer = new ContrôleurBoutonLancer(cadreAngryBalls.boutonJeu, this.animationBilles, this);
 		this.contrôleurBoutonArrêter = new ContrôleurBoutonArrêter(cadreAngryBalls.boutonJeu, this.animationBilles, this, contrôleurBoutonLancer, contrôleurBoutonLancer);

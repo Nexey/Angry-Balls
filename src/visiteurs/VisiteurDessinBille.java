@@ -5,13 +5,24 @@ import java.awt.Graphics;
 
 import modele.Bille;
 
+/**
+ * 
+ * Le visiteur de dessin
+ * Comme la bille n'est pas censé être un objet graphique,
+ * je fais de ce visiteur l'objet graphique qui peut dessiner une bille
+ * 
+ */
 public class VisiteurDessinBille implements IVisiteur {
 	protected Graphics graphics;
 	
 	public VisiteurDessinBille(Graphics graphics) {
 		this.graphics = graphics;
 	}
-	
+
+	/**
+	 * @param bille     la bille à dessiner
+	 * Utilise les données de la bille pour l'afficher à l'écran
+	 */
 	@Override
 	public boolean visite(Bille bille) {
 		int width, height;

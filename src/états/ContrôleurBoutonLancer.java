@@ -13,7 +13,10 @@ public class ContrôleurBoutonLancer extends ContrôleurBouton {
 	public ContrôleurBoutonLancer(BoutonAvecIcones source, AnimationBilles animationBilles, ApplicationContrôlée application, ContrôleurÉtat suivant, ContrôleurÉtat retour) {
 		super(source, animationBilles, application, suivant, retour);
 	}
-	
+
+	/**
+	 * Lance l'animation et mets à jour l'icone de jeu
+	 */
 	@Override
 	public void traite() {
 		this.animationBilles.lancerAnimation();

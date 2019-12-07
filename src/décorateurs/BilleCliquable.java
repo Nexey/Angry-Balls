@@ -8,6 +8,10 @@ import mesmaths.geometrie.base.Vecteur;
 import modele.Bille;
 import modele.InfoClique;
 
+/**
+ * Cas d'une bille de billard qui peut être cliquée par l'utilisateur
+ */
+
 public abstract class BilleCliquable extends DécorateurBille implements Observer {
 	protected Vecteur posClique;
 	protected boolean cliquée;
@@ -18,6 +22,10 @@ public abstract class BilleCliquable extends DécorateurBille implements Observer
 		this.posClique = Vecteur.VECTEURNUL;
 	}
 
+	/**
+	 * @param infoClique     gère la position et la nature du dernier événement reçu
+	 * vérifie que la pression du clique se soit effectuée sur la bille
+	 */
 	public void gérerPresse(InfoClique infoClique) {
 		if (Geop.appartientDisque(infoClique.getPositionClique(), this.getPosition(), this.getRayon())) {
 			this.cliquée = true;
@@ -25,13 +33,26 @@ public abstract class BilleCliquable extends DécorateurBille implements Observer
 		}
 	}
 
+	/**
+	 * @param infoClique     gère la position et la nature du dernier événement reçu
+	 * mets à jour la bille pendant le déplacement de la souris lors du maintien du clique
+	 */
 	public abstract void gérerPresseMouvement(InfoClique infoClique);
 
+	/**
+	 * @param infoClique     gère la position et la nature du dernier événement reçu
+	 * mets à jour la bille une fois le bouton relaché
+	 */
 	public void gérerRelaché(InfoClique infoClique) {
 		this.setCliquée(false);
 		this.setPosClique(Vecteur.VECTEURNUL);
 	}
 
+	/**
+	 * @param o     l'observable ayant lancé l'appel
+	 * @param arg	l'objet passé en paramètre par l'observable
+	 * transforme un arg en infoClique si possible et poursuit les traitements dessus
+	 */
 	@Override
 	public void update(Observable o, Object arg) {
 		InfoClique infoClique;

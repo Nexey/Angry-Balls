@@ -29,9 +29,6 @@ public abstract class BilleVoleuse extends DécorateurBille {
 			for (Bille bille : autreBille) {
 				if (Geop.intersectionCercleCercle(this.getPosition(), this.getRayon()*2, bille.getPosition(), bille.getRayon())) {
 					return appliquerVol(billes, bille);
-					// Vecteur temp = new Vecteur(this.getPosition());
-					// this.getPosition().set(new Vecteur(bille.getPosition()));
-					// bille.getPosition().set(temp);
 				}
 			}
 		}

@@ -10,7 +10,7 @@ public class BilleFrottement extends DécorateurBille {
 	public BilleFrottement(Bille billeDécorée) {
 		super(billeDécorée);
 	}
-
+	
 	@Override
 	public void gestionAccélération(Vector<Bille> billes) {
 		super.gestionAccélération(billes); // remise à zéro du vecteur accélération

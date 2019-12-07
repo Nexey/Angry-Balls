@@ -6,6 +6,13 @@ import main.AnimationBilles;
 import main.ApplicationContrôlée;
 import modele.BoutonAvecIcones;
 
+/**
+ * 
+ * Le contrôleur du bouton de jeu
+ * L'application de base possédait 2 boutons qui pouvaient être résumés en un seul bouton qui fait le travail
+ * Ce contrôleur récupère les événements liés aux boutons et mets à jour le jeu
+ * 
+ */
 public abstract class ContrôleurBouton extends ContrôleurÉtat {
 	protected AnimationBilles animationBilles;
 	protected BoutonAvecIcones source; // Pour identifier quel bouton lève l'événement "ActionListener"
@@ -20,6 +27,9 @@ public abstract class ContrôleurBouton extends ContrôleurÉtat {
 		this.source = source;
 	}
 
+	/**
+	 * @param e     l'objet renvoyé par l'événement
+	 */
 	@Override
 	public void actionDétectée(Object e) {
 		ActionEvent event = (ActionEvent) e;

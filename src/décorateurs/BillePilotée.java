@@ -24,6 +24,10 @@ public class BillePilotée extends BilleCliquableDéplaçable {
 		return "bille pillotée - " + this.billeDécorée.toString();
 	}
 
+
+	/**
+	 * @param direction		la direction à suivre
+	 */
 	@Override
 	public Vecteur appliquerVecteurVitesse(Vecteur direction) {
 		Vecteur nouvelleVitesse = new Vecteur(0, 0);

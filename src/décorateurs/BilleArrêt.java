@@ -1,14 +1,19 @@
 package décorateurs;
 
 import mesmaths.cinematique.Collisions;
+
 import modele.Bille;
+
+/**
+ * Cas d'une bille de billard qui s'arrête contre les parois du billard
+ */
 
 public class BilleArrêt extends DécorateurBille {
 
 	public BilleArrêt(Bille billeDécorée) {
 		super(billeDécorée);
 	}
-
+	
 	@Override
 	public void collisionContour(double abscisseCoinHautGauche, double ordonnéeCoinHautGauche, double largeur, double hauteur) {
 		Collisions.collisionBilleContourAvecArretHorizontal(this.getPosition(), this.getRayon(), this.getVitesse(), abscisseCoinHautGauche, largeur);
