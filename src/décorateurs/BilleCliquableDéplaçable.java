@@ -10,15 +10,13 @@ public abstract class BilleCliquableDéplaçable extends BilleCliquable {
 		super(billeDécorée);
 	}
 	
+	public abstract Vecteur appliquerVecteurVitesse(Vecteur direction);
+	
 	public void effectuerDéplacementAuClique(InfoClique infoClique) {
 		if (this.isCliquée()) {
 			Vecteur direction = infoClique.getPositionClique().difference(this.posClique);
-			
-			Vecteur nouvelleVitesse = new Vecteur(0, 0);
-			nouvelleVitesse.x = direction.x / 10000;
-			nouvelleVitesse.y = direction.y / 10000;
 
-			this.getAccélération().ajoute(nouvelleVitesse);
+			this.getAccélération().ajoute(appliquerVecteurVitesse(direction));
 			setPosClique(infoClique.getPositionClique());
 		}
 	}

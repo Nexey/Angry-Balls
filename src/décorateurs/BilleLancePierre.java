@@ -14,6 +14,9 @@ public class BilleLancePierre extends BilleCliquableDéplaçable {
 		super(billeDécorée);
 	}
 	@Override
+	public void gérerPresseMouvement(InfoClique infoClique) {}
+	
+	@Override
 	public void gérerRelaché(InfoClique infoClique) {
 		this.effectuerDéplacementAuClique(infoClique);
 		super.gérerRelaché(infoClique);
@@ -22,5 +25,12 @@ public class BilleLancePierre extends BilleCliquableDéplaçable {
 	@Override
 	public String toString() {
 		return "bille lance-pière - " + this.billeDécorée.toString();
+	}
+	@Override
+	public Vecteur appliquerVecteurVitesse(Vecteur direction) {
+		Vecteur nouvelleVitesse = new Vecteur(0, 0);
+		nouvelleVitesse.x = direction.x / 10000;
+		nouvelleVitesse.y = direction.y / 10000;
+		return nouvelleVitesse;
 	}
 }
